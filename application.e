@@ -27,10 +27,7 @@ feature {NONE} -- Initialization
 			game_library.hide_mouse_cursor
 			image_file_library.enable_image (true, false, true)
 			create l_engine.make
-			if not l_engine.has_error then
-				l_engine.start_game
-			end
-			l_engine := Void
+			l_engine.start_game
 			game_library.clear_all_events
 			game_library.quit_library
 			image_file_library.quit_library
