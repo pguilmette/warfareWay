@@ -23,6 +23,7 @@ feature {NONE} -- Initialisation
 		local
 			l_window_builder:GAME_WINDOW_RENDERED_BUILDER
 		do
+			create l_icon_image.make ("includes/images/icon.bmp")
 			create l_window_builder
 			l_window_builder.set_dimension (1024, 640)
 			l_window_builder.set_title ("Warfare Way")
