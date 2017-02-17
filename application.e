@@ -10,6 +10,7 @@ class
 
 inherit
 	GAME_LIBRARY_SHARED
+	IMG_LIBRARY_SHARED
 
 create
     make
@@ -17,19 +18,22 @@ create
 feature {NONE} -- Initialization
 
     make
-            -- Running the game.
+            -- Exécution du jeu
         local
-        	l_engin:detachable JEU
+        	l_engine : detachable ENGIN
+        		-- L'engin principal du jeu
         do
         	game_library.enable_video
 			game_library.hide_mouse_cursor
-			create l_engin.make
-			if not l_engin.has_error then
-				l_engin.run
+			image_file_library.enable_image (true, false, true)
+			create l_engine.make
+			if not l_engine.has_error then
+				l_engine.start_game
 			end
-			l_engin := Void
+			l_engine := Void
 			game_library.clear_all_events
 			game_library.quit_library
+			image_file_library.quit_library
         end
 
 end
