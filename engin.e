@@ -16,7 +16,7 @@ inherit
 create
     make
 
-feature {NONE} -- Initialisation
+feature {NONE} -- Initialization
 
 	make
 			-- Initialisation de `Current'
