@@ -31,11 +31,7 @@ feature {NONE} -- Initialisation
 			l_window_builder.set_title ("Warfare Way")
 			l_window_builder.enable_must_renderer_synchronize_update
 			window := l_window_builder.generate_window
-
 			create test_image.make (window.renderer)
-			window.renderer.draw_texture (test_image, 0, 0)
-			window.renderer.present
-
 			if l_icon_image.is_openable then
 				l_icon_image.open
 				if l_icon_image.is_open then
@@ -54,6 +50,7 @@ feature -- Access
 		local
 		do
 			game_library.quit_signal_actions.extend (agent on_quit)
+			game_library.iteration_actions.extend (agent on_iteration)
 			if window.renderer.driver.is_present_synchronized_supported then
 				game_library.launch_no_delay
 			else
@@ -69,10 +66,17 @@ feature -- Access
 
 feature {NONE} -- Implementation
 
-	on_quit(a_timestamp: NATURAL_32)
-			-- This method is called when the quit signal is send to the application (ex: window X button pressed).
+	on_iteration(a_timestamp:NATURAL_32)
+			-- Événement qui s'exécute à chaque iteration
 		do
-			game_library.stop  -- Stop the controller loop (allow game_library.launch to return)
+			window.renderer.draw_texture (test_image, 0, 0)
+			window.renderer.present
+		end
+
+	on_quit(a_timestamp: NATURAL_32)
+			-- Appelé lorsque le 'X' est appuyé dans le coin
+		do
+			game_library.stop
 		end
 
 end
