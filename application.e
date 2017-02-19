@@ -11,6 +11,7 @@ class
 inherit
 	GAME_LIBRARY_SHARED
 	IMG_LIBRARY_SHARED
+	MPG_LIBRARY_SHARED
 
 create
     make
@@ -23,14 +24,12 @@ feature {NONE} -- Initialization
         	l_engine : detachable ENGIN
         		-- L'engin principal du jeu
         do
+        	mpg_library.enable_mpg
         	game_library.enable_video
 			game_library.hide_mouse_cursor
 			image_file_library.enable_image (true, false, true)
 			create l_engine.make
 			l_engine.start_game
-			game_library.clear_all_events
-			game_library.quit_library
-			image_file_library.quit_library
         end
 
 end
