@@ -19,12 +19,12 @@ create
 
 feature {NONE} -- Initialization
 
-	make(a_renderer: GAME_RENDERER)
-			-- Fond de la fenêtre principale
+	make(a_renderer: GAME_RENDERER; a_filename: STRING)
+			-- Images
 		local
 			l_background: IMG_IMAGE_FILE
 		do
-			create l_background.make ("includes/images/background.jpg")
+			create l_background.make (a_filename)
 			if l_background.is_openable then
 				l_background.open
 				if l_background.is_open then

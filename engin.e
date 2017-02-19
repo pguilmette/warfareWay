@@ -31,7 +31,8 @@ feature {NONE} -- Initialization
 			l_window_builder.set_title ("Warfare Way")
 			l_window_builder.enable_must_renderer_synchronize_update
 			window := l_window_builder.generate_window
-			create test_image.make (window.renderer)
+			create test_image.make (window.renderer, "includes/images/background.jpg")
+			create test_minimap.make (window.renderer, "includes/images/minimap.jpg")
 			if l_icon_image.is_openable then
 				l_icon_image.open
 				if l_icon_image.is_open then
@@ -50,6 +51,9 @@ feature -- Access
 		local
 		do
 			game_library.quit_signal_actions.extend (agent on_quit)
+			window.renderer.draw_texture (test_image, 0, 0)
+			window.key_pressed_actions.extend (agent on_key_pressed)
+			window.key_released_actions.extend (agent on_key_released)
 			game_library.iteration_actions.extend (agent on_iteration)
 			if window.renderer.driver.is_present_synchronized_supported then
 				game_library.launch_no_delay
@@ -62,14 +66,36 @@ feature -- Access
 			-- La fenêtre principale du jeu
 
 	test_image: MAP
-			-- Le fond de la fenêtre
+			-- Le fond de la fenêtre pour tester
+
+	test_minimap: MAP
+			-- Une minimap pour tester les touches
 
 feature {NONE} -- Implementation
+
+	on_key_pressed(a_timestamp: NATURAL_32; a_key_state: GAME_KEY_STATE)
+			-- Événement lorsqu'une touche est appuyée
+		do
+			if not a_key_state.is_repeat then
+				if a_key_state.is_tab then
+					window.renderer.draw_texture (test_minimap, 100, 75)
+				end
+			end
+		end
+
+	on_key_released(a_timestamp: NATURAL_32; a_key_state: GAME_KEY_STATE)
+			-- Événement lorsqu'une touche n'est plus appuyée
+		do
+			if not a_key_state.is_repeat then
+				if a_key_state.is_tab then
+					window.renderer.draw_texture (test_image, 0, 0)
+				end
+			end
+		end
 
 	on_iteration(a_timestamp:NATURAL_32)
 			-- Événement qui s'exécute à chaque iteration
 		do
-			window.renderer.draw_texture (test_image, 0, 0)
 			window.renderer.present
 		end
 
