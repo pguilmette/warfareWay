@@ -1,8 +1,8 @@
 note
 	description: "Summary description for {MUR}."
-	author: ""
-	date: "$Date$"
-	revision: "$Revision$"
+	author: "Philippe Guilmette"
+	author: "Étienne Boutet"
+	date: "20160220"
 
 class
 	MUR

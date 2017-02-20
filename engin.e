@@ -2,8 +2,7 @@ note
 	description: "Summary description for {JEU}."
 	author: "Philippe Guilmette"
 	author: "Étienne Boutet"
-	date: "$Date$"
-	revision: "$Revision$"
+	date: "20160220"
 
 class
 	ENGIN
