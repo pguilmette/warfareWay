@@ -7,4 +7,15 @@ note
 class
 	MENU_PRINCIPAL
 
+create
+	make
+
+feature {NONE} -- Initialization
+
+	make
+		local
+		do
+			
+		end
+
 end

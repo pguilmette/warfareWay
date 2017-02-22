@@ -30,6 +30,11 @@ feature {NONE} -- Initialization
 			l_window_builder.set_title ("Warfare Way")
 			l_window_builder.enable_must_renderer_synchronize_update
 			window := l_window_builder.generate_window
+			create font.make ("includes/fonts/Lobster-Regular.ttf", 20)
+			if font.is_openable then
+				font.open
+			end
+
 			create test_image.make (window.renderer, "includes/images/background.jpg")
 			create test_minimap.make (window.renderer, "includes/images/minimap.jpg")
 			if l_icon_image.is_openable then
@@ -45,6 +50,7 @@ feature {NONE} -- Initialization
 		end
 
 feature -- Access
+
 	start_game
 			-- Partir le jeu
 		local
@@ -61,13 +67,16 @@ feature -- Access
 			end
 		end
 
-	window : GAME_WINDOW_RENDERED
+	window:GAME_WINDOW_RENDERED
 			-- La fenêtre principale du jeu
 
-	test_image: MAP
+	font:TEXT_FONT
+			-- Utilisé pour créer du texte
+
+	test_image:MAP
 			-- Le fond de la fenêtre pour tester
 
-	test_minimap: MAP
+	test_minimap:MAP
 			-- Une minimap pour tester les touches
 
 feature {NONE} -- Implementation
