@@ -23,9 +23,9 @@ feature {NONE} -- Initialization
 			create asset_top.make (window.renderer, "includes/images/asset_top.jpg")
 			create asset_mid.make (window.renderer, "includes/images/asset_middle.jpg")
 			create asset_bottom.make (window.renderer, "includes/images/asset_bottom.jpg")
-			--window.renderer.draw_texture (asset_top, 600, 30)
-			--window.renderer.draw_texture (asset_mid, 600, 230)
-			--window.renderer.draw_texture (asset_bottom, 600, 430)
+			window.renderer.draw_texture (asset_top, 600, 30)
+			window.renderer.draw_texture (asset_mid, 600, 230)
+			window.renderer.draw_texture (asset_bottom, 600, 430)
 		end
 
 feature -- Access
@@ -33,24 +33,19 @@ feature -- Access
 	has_error:BOOLEAN
 			-- Devient `True' si une erreur survient durant la création de `Current'
 
-	asset_links:ARRAYED_LIST[STRING]
-		do
-			asset_links.put("includes/images/asset_top.jpg")
-			asset_links.put("includes/images/asset_middle.jpg")
-			asset_links.put("includes/images/asset_bottom.jpg")
-		end
+	asset_top:IMAGE
+			-- L'image dans le haut à droite du menu
+
+	asset_mid:IMAGE
+			-- L'image dans le centre à droite du menu
+
+	asset_bottom:IMAGE
+			-- L'image dans le bas à droite du menu
 
 feature {NONE} -- Implementation
 
 	show_sections(a_text_sections:ARRAYED_LIST[STRING])
 			-- Affiche chaque section contenu dans `l_textSections' dans le menu
-		local
-		do
-
-		end
-
-	create_assets(a_links:ARRAYED_LIST[STRING])
-			-- Crée les images à mettre sur les menus
 		local
 		do
 
