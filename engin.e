@@ -11,11 +11,12 @@ inherit
 	GAME_LIBRARY_SHARED
 	AUDIO_LIBRARY_SHARED
 	MPG_LIBRARY_SHARED
+	TEXT_LIBRARY_SHARED
 
 create
     make
 
-feature {NONE} -- Initialization
+feature {NONE} -- Initialisation
 
 	make
 			-- Initialisation de `Current'
@@ -25,18 +26,6 @@ feature {NONE} -- Initialization
 			l_window_builder:GAME_WINDOW_RENDERED_BUILDER
 		do
 			create l_icon_image.make ("includes/images/icon.bmp")
-			create l_window_builder
-			l_window_builder.set_dimension (800, 600)
-			l_window_builder.set_title ("Warfare Way")
-			l_window_builder.enable_must_renderer_synchronize_update
-			window := l_window_builder.generate_window
-			create font.make ("includes/fonts/Lobster-Regular.ttf", 20)
-			if font.is_openable then
-				font.open
-			end
-
-			create test_image.make (window.renderer, "includes/images/background.jpg")
-			create test_minimap.make (window.renderer, "includes/images/minimap.jpg")
 			if l_icon_image.is_openable then
 				l_icon_image.open
 				if l_icon_image.is_open then
@@ -47,6 +36,19 @@ feature {NONE} -- Initialization
 					print("Cannot set the window icon.")
 				end
 			end
+			create l_window_builder
+			l_window_builder.set_dimension (800, 600)
+			l_window_builder.set_title ("Warfare Way")
+			l_window_builder.enable_must_renderer_synchronize_update
+			window := l_window_builder.generate_window
+			text_library.enable_text
+			create font.make ("includes/fonts/Lobster-Regular.ttf", 20)
+			if font.is_openable then
+				font.open
+			end
+
+			create test_image.make (window.renderer, "includes/images/background.jpg")
+			create test_minimap.make (window.renderer, "includes/images/minimap.jpg")
 		end
 
 feature -- Access
@@ -73,10 +75,13 @@ feature -- Access
 	font:TEXT_FONT
 			-- Utilisé pour créer du texte
 
-	test_image:MAP
+	test_image:IMAGE
 			-- Le fond de la fenêtre pour tester
 
-	test_minimap:MAP
+	menu:MENU_PRINCIPAL
+			-- Le menu principal du jeu
+
+	test_minimap:IMAGE
 			-- Une minimap pour tester les touches
 
 feature {NONE} -- Implementation

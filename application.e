@@ -16,7 +16,7 @@ inherit
 create
     make
 
-feature {NONE} -- Initialization
+feature {NONE} -- Initialisation
 
     make
             -- Exécution du jeu

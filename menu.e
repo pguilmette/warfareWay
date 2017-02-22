@@ -12,11 +12,11 @@ feature {NONE} -- Initialization
 	make(window : GAME_WINDOW_RENDERED)
 			-- Initialisation de `Current'
 		local
-			l_textTitle:TEXT_SURFACE_BLENDED
+			l_text_title:TEXT_SURFACE_BLENDED
 				do
 					Result := "Warfare Way"
 				end
-			l_textSections:TUPLE[section:TEXT_SURFACE_BLENDED]]
+			l_text_sections:ARRAYED_LIST[STRING]
 		do
 			window.renderer.set_drawing_color (create {GAME_COLOR}.make_rgb (128, 128, 128))
 			window.renderer.draw_filled_rectangle (0, 0, window.width, window.height)
@@ -33,12 +33,24 @@ feature -- Access
 	has_error:BOOLEAN
 			-- Devient `True' si une erreur survient durant la création de `Current'
 
-	assets:TUPLE[asset:IMAGE]
+	asset_links:ARRAYED_LIST[STRING]
+		do
+			asset_links.put("includes/images/asset_top.jpg")
+			asset_links.put("includes/images/asset_middle.jpg")
+			asset_links.put("includes/images/asset_bottom.jpg")
+		end
 
 feature {NONE} -- Implementation
 
-	list_sections(l_textSections:TUPLE)
+	show_sections(a_text_sections:ARRAYED_LIST[STRING])
 			-- Affiche chaque section contenu dans `l_textSections' dans le menu
+		local
+		do
+
+		end
+
+	create_assets(a_links:ARRAYED_LIST[STRING])
+			-- Crée les images à mettre sur les menus
 		local
 		do
 

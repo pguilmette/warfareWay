@@ -7,6 +7,9 @@ note
 class
 	MENU_PRINCIPAL
 
+inherit
+	MENU
+
 create
 	make
 
@@ -15,7 +18,7 @@ feature {NONE} -- Initialization
 	make
 		local
 		do
-			
+
 		end
 
 end
