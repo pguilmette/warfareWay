@@ -9,6 +9,9 @@ class
 
 inherit
 	MENU
+		rename
+			make as make_base
+		end
 
 create
 	make
@@ -18,7 +21,7 @@ feature {NONE} -- Initialization
 	make
 		local
 		do
-
+			sections.extend ("Jouer")
 		end
 
 end

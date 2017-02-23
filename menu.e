@@ -9,23 +9,29 @@ deferred class
 
 feature {NONE} -- Initialization
 
-	make(window : GAME_WINDOW_RENDERED)
+	make(a_window : GAME_WINDOW_RENDERED)
 			-- Initialisation de `Current'
 		local
 			l_text_title:TEXT_SURFACE_BLENDED
-				do
-					Result := "Warfare Way"
-				end
-			l_text_sections:ARRAYED_LIST[STRING]
+					-- Le texte à dessiner
+
+			l_asset_top:IMAGE
+					-- L'image dans le haut à droite du menu
+
+			l_asset_mid:IMAGE
+					-- L'image dans le centre à droite du menu
+
+			l_asset_bottom:IMAGE
+					-- L'image dans le bas à droite du menu
 		do
-			window.renderer.set_drawing_color (create {GAME_COLOR}.make_rgb (128, 128, 128))
-			window.renderer.draw_filled_rectangle (0, 0, window.width, window.height)
-			create asset_top.make (window.renderer, "includes/images/asset_top.jpg")
-			create asset_mid.make (window.renderer, "includes/images/asset_middle.jpg")
-			create asset_bottom.make (window.renderer, "includes/images/asset_bottom.jpg")
-			window.renderer.draw_texture (asset_top, 600, 30)
-			window.renderer.draw_texture (asset_mid, 600, 230)
-			window.renderer.draw_texture (asset_bottom, 600, 430)
+			a_window.renderer.set_drawing_color (create {GAME_COLOR}.make_rgb (128, 128, 128))
+			a_window.renderer.draw_filled_rectangle (0, 0, a_window.width, a_window.height)
+			create l_asset_top.make (a_window.renderer, "includes/images/asset_top.jpg")
+			create l_asset_mid.make (a_window.renderer, "includes/images/asset_middle.jpg")
+			create l_asset_bottom.make (a_window.renderer, "includes/images/asset_bottom.jpg")
+			a_window.renderer.draw_texture (l_asset_top, 600, 30)
+			a_window.renderer.draw_texture (l_asset_mid, 600, 230)
+			a_window.renderer.draw_texture (l_asset_bottom, 600, 430)
 		end
 
 feature -- Access
@@ -33,14 +39,8 @@ feature -- Access
 	has_error:BOOLEAN
 			-- Devient `True' si une erreur survient durant la création de `Current'
 
-	asset_top:IMAGE
-			-- L'image dans le haut à droite du menu
-
-	asset_mid:IMAGE
-			-- L'image dans le centre à droite du menu
-
-	asset_bottom:IMAGE
-			-- L'image dans le bas à droite du menu
+	sections:ARRAYED_LIST[STRING]
+			-- La liste des sections du menu
 
 feature {NONE} -- Implementation
 

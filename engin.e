@@ -25,6 +25,11 @@ feature {NONE} -- Initialisation
 			l_icon:GAME_SURFACE
 			l_window_builder:GAME_WINDOW_RENDERED_BUILDER
 		do
+			create l_window_builder
+			l_window_builder.set_dimension (800, 600)
+			l_window_builder.set_title ("Warfare Way")
+			l_window_builder.enable_must_renderer_synchronize_update
+			window := l_window_builder.generate_window
 			create l_icon_image.make ("includes/images/icon.bmp")
 			if l_icon_image.is_openable then
 				l_icon_image.open
@@ -36,16 +41,12 @@ feature {NONE} -- Initialisation
 					print("Cannot set the window icon.")
 				end
 			end
-			create l_window_builder
-			l_window_builder.set_dimension (800, 600)
-			l_window_builder.set_title ("Warfare Way")
-			l_window_builder.enable_must_renderer_synchronize_update
-			window := l_window_builder.generate_window
 			text_library.enable_text
 			create font.make ("includes/fonts/Lobster-Regular.ttf", 20)
 			if font.is_openable then
 				font.open
 			end
+			create menu.make
 
 			create test_image.make (window.renderer, "includes/images/background.jpg")
 			create test_minimap.make (window.renderer, "includes/images/minimap.jpg")
