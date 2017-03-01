@@ -26,12 +26,12 @@ feature {NONE} -- Initialization
 		do
 			a_window.renderer.set_drawing_color (create {GAME_COLOR}.make_rgb (128, 128, 128))
 			a_window.renderer.draw_filled_rectangle (0, 0, a_window.width, a_window.height)
-			create l_asset_top.make (a_window.renderer, "includes/images/asset_top.jpg")
-			create l_asset_mid.make (a_window.renderer, "includes/images/asset_middle.jpg")
-			create l_asset_bottom.make (a_window.renderer, "includes/images/asset_bottom.jpg")
-			a_window.renderer.draw_texture (l_asset_top, 600, 30)
-			a_window.renderer.draw_texture (l_asset_mid, 600, 230)
-			a_window.renderer.draw_texture (l_asset_bottom, 600, 430)
+			create l_asset_top.make (a_window.renderer, "includes/images/asset_top.png")
+			create l_asset_mid.make (a_window.renderer, "includes/images/asset_middle.png")
+			create l_asset_bottom.make (a_window.renderer, "includes/images/asset_bottom.png")
+			a_window.renderer.draw_texture (l_asset_top, 500, 5)
+			a_window.renderer.draw_texture (l_asset_mid, 500, 190)
+			a_window.renderer.draw_texture (l_asset_bottom, 500, 390)
 		end
 
 feature -- Access
@@ -39,7 +39,7 @@ feature -- Access
 	has_error:BOOLEAN
 			-- Devient `True' si une erreur survient durant la création de `Current'
 
-	sections:ARRAYED_LIST[STRING]
+	--sections:ARRAYED_LIST[STRING]
 			-- La liste des sections du menu
 
 feature {NONE} -- Implementation

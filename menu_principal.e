@@ -22,7 +22,7 @@ feature {NONE} -- Initialization
 		local
 		do
 			make_base(a_window)
-			sections.extend ("Jouer")
+			--sections.extend ("Jouer")
 		end
 
 end

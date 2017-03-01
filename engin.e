@@ -46,10 +46,7 @@ feature {NONE} -- Initialisation
 			if font.is_openable then
 				font.open
 			end
-			create menu.make
-
-			create test_image.make (window.renderer, "includes/images/background.jpg")
-			create test_minimap.make (window.renderer, "includes/images/minimap.jpg")
+			create menu.make(window)
 		end
 
 feature -- Access
@@ -59,9 +56,6 @@ feature -- Access
 		local
 		do
 			game_library.quit_signal_actions.extend (agent on_quit)
-			window.renderer.draw_texture (test_image, 0, 0)
-			window.key_pressed_actions.extend (agent on_key_pressed)
-			window.key_released_actions.extend (agent on_key_released)
 			game_library.iteration_actions.extend (agent on_iteration)
 			if window.renderer.driver.is_present_synchronized_supported then
 				game_library.launch_no_delay
@@ -76,36 +70,10 @@ feature -- Access
 	font:TEXT_FONT
 			-- Utilisé pour créer du texte
 
-	test_image:IMAGE
-			-- Le fond de la fenêtre pour tester
-
 	menu:MENU_PRINCIPAL
 			-- Le menu principal du jeu
 
-	test_minimap:IMAGE
-			-- Une minimap pour tester les touches
-
 feature {NONE} -- Implementation
-
-	on_key_pressed(a_timestamp: NATURAL_32; a_key_state: GAME_KEY_STATE)
-			-- Événement lorsqu'une touche est appuyée
-		do
-			if not a_key_state.is_repeat then
-				if a_key_state.is_tab then
-					window.renderer.draw_texture (test_minimap, 100, 75)
-				end
-			end
-		end
-
-	on_key_released(a_timestamp: NATURAL_32; a_key_state: GAME_KEY_STATE)
-			-- Événement lorsqu'une touche n'est plus appuyée
-		do
-			if not a_key_state.is_repeat then
-				if a_key_state.is_tab then
-					window.renderer.draw_texture (test_image, 0, 0)
-				end
-			end
-		end
 
 	on_iteration(a_timestamp:NATURAL_32)
 			-- Événement qui s'exécute à chaque iteration
