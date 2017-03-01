@@ -18,9 +18,10 @@ create
 
 feature {NONE} -- Initialization
 
-	make
+	make(a_window: GAME_WINDOW_RENDERED)
 		local
 		do
+			make_base(a_window)
 			sections.extend ("Jouer")
 		end
 
