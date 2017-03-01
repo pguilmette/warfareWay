@@ -25,8 +25,9 @@ feature {NONE} -- Initialisation
 feature -- Accès
 
 	source:AUDIO_SOURCE
+		-- Source où les sons seront par la suite joués.
 	sound:AUDIO_SOUND_WAV_FILE
-
+		-- Son à faire joeur
 	play_music
 		-- Permet de faire jouer la musique du jeu
 	do
