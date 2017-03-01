@@ -28,10 +28,19 @@ feature -- Accès
 		-- Source où les sons seront par la suite joués.
 	sound:AUDIO_SOUND_WAV_FILE
 		-- Son à faire joeur
+
 	play_music
 		-- Permet de faire jouer la musique du jeu
 	do
 		source.queue_sound_infinite_loop (sound)
 		source.play
 	end
+
+	play_sound
+		-- Permet de faire jouer un son
+	do
+		source.queue_sound (sound)
+		source.play
+	end
+
 end
