@@ -46,7 +46,7 @@ feature {NONE} -- Initialisation
 			if font.is_openable then
 				font.open
 			end
-			create menu.make(window)
+			create menu.make(window, font)
 		end
 
 feature -- Access

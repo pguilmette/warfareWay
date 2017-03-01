@@ -18,11 +18,10 @@ create
 
 feature {NONE} -- Initialization
 
-	make(a_window: GAME_WINDOW_RENDERED)
+	make(a_window: GAME_WINDOW_RENDERED; a_font:TEXT_FONT)
 		local
 		do
-			make_base(a_window)
-			--sections.extend ("Jouer")
+			make_base(a_window, a_font)
 		end
 
 end
