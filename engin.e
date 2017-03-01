@@ -64,10 +64,10 @@ feature -- Access
 	window : GAME_WINDOW_RENDERED
 			-- La fenêtre principale du jeu
 
-	test_image: MAP
+	test_image: IMAGE
 			-- Le fond de la fenêtre pour tester
 
-	test_minimap: MAP
+	test_minimap: IMAGE
 			-- Une minimap pour tester les touches
 
 feature {NONE} -- Implementation
