@@ -24,6 +24,8 @@ feature {NONE} -- Initialization
 			l_icon:GAME_SURFACE
 			l_window_builder:GAME_WINDOW_RENDERED_BUILDER
 		do
+			create game_music.make
+			game_music.play_music
 			create l_icon_image.make ("includes/images/icon.bmp")
 			create l_window_builder
 			l_window_builder.set_dimension (800, 600)
@@ -70,6 +72,9 @@ feature -- Access
 	test_minimap: IMAGE
 			-- Une minimap pour tester les touches
 
+	game_music:MUSIQUE
+			-- Musique du jeu
+
 feature {NONE} -- Implementation
 
 	on_key_pressed(a_timestamp: NATURAL_32; a_key_state: GAME_KEY_STATE)
@@ -96,6 +101,7 @@ feature {NONE} -- Implementation
 			-- Événement qui s'exécute à chaque iteration
 		do
 			window.renderer.present
+			audio_library.update
 		end
 
 	on_quit(a_timestamp: NATURAL_32)
