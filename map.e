@@ -1,5 +1,5 @@
 note
-	description: "Summary description for {MAP}."
+	description: "Objet pour un niveau du jeu."
 	author: "Philippe Guilmette"
 	author: "Étienne Boutet"
 	date: "20160220"

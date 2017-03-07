@@ -1,5 +1,5 @@
 note
-	description: "Summary description for {MENU_PRINCIPAL}."
+	description: "Objet pour le menu principal."
 	author: "Philippe Guilmette"
 	author: "Étienne Boutet"
 	date: "20160220"
