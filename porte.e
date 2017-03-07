@@ -1,5 +1,5 @@
 note
-	description: "Summary description for {PORTE}."
+	description: "Objet pour une porte du niveau."
 	author: "Philippe Guilmette"
 	author: "Étienne Boutet"
 	date: "20160220"

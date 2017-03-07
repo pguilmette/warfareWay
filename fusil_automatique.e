@@ -1,5 +1,5 @@
 note
-	description: "Summary description for {FUSIL_AUTOMATIQUE}."
+	description: "Objet pour le fusil automatique."
 	author: "Philippe Guilmette"
 	author: "Étienne Boutet"
 	date: "20160220"

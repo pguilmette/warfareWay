@@ -1,5 +1,5 @@
 note
-	description: "Summary description for {IMAGE}."
+	description: "Objet pour créer une image à partir d'un fichier."
 	author: ""
 	date: "$Date$"
 	revision: "$Revision$"

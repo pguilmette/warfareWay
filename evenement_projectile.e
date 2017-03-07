@@ -1,5 +1,5 @@
 note
-	description: "Summary description for {EVENEMENT_PROJECTILE}."
+	description: "Objet pour les évènements des projectiles."
 	author: "Philippe Guilmette"
 	author: "Étienne Boutet"
 	date: "20160220"

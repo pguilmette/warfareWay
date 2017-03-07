@@ -1,5 +1,5 @@
 note
-	description: "Summary description for {BOUGER_CURSEUR}."
+	description: "Objet pour permettre le déplacement du curseur dans le jeu."
 	author: "Philippe Guilmette"
 	author: "Étienne Boutet"
 	date: "20160220"

@@ -1,5 +1,5 @@
 note
-	description: "Summary description for {JEU}."
+	description: "Objet principal pour démarrer le jeu."
 	author: "Philippe Guilmette"
 	author: "Étienne Boutet"
 	date: "20160220"
@@ -34,7 +34,7 @@ feature {NONE} -- Initialization
 			window := l_window_builder.generate_window
 			create player.make (window.renderer)
 			create test_image.make (window.renderer, "includes/images/background.jpg")
-			create test_minimap.make (window.renderer, "includes/images/minimap.jpg")
+			create test_minimap.make (window.renderer, "includes/images/comment_jouer.jpg")
 			if l_icon_image.is_openable then
 				l_icon_image.open
 				if l_icon_image.is_open then
@@ -88,6 +88,7 @@ feature {NONE} -- Implementation
 		do
 			if not a_key_state.is_repeat then
 				if a_key_state.is_tab then
+<<<<<<< HEAD
 					window.renderer.draw_texture (test_minimap, 100, 75)
 				elseif a_key_state.is_a then
 					player.go_left (a_timestamp)
@@ -97,6 +98,9 @@ feature {NONE} -- Implementation
 					player.go_up (a_timestamp)
 				elseif a_key_state.is_s then
 					player.go_down (a_timestamp)
+=======
+					window.renderer.draw_texture (test_minimap, 50, 37)
+>>>>>>> c083b430f69ed46056044729f51d4b8cfaea577e
 				end
 			end
 		end

@@ -1,5 +1,5 @@
 note
-	description: "Summary description for {ARMES_TIRE}."
+	description: "Objet pour déterminer les éléments des armes de tir."
 	author: "Philippe Guilmette"
 	author: "Étienne Boutet"
 	date: "20160220"

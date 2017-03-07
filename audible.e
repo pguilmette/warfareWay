@@ -1,5 +1,5 @@
 note
-	description: "Summary description for {AUDIBLE}."
+	description: "Objet pour gérer le son du jeu."
 	author: "Philippe Guilmette"
 	author: "Étienne Boutet"
 	date: "20160220"

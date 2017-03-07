@@ -1,5 +1,5 @@
 note
-	description: "Summary description for {EVENEMENT_OBSTACLE}."
+	description: "Objet pour les évènements des obstacles."
 	author: "Philippe Guilmette"
 	author: "Étienne Boutet"
 	date: "20160220"

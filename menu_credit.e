@@ -1,5 +1,5 @@
 note
-	description: "Summary description for {MENU_CREDIT}."
+	description: "Objet pour le menu des crédits."
 	author: "Philippe Guilmette"
 	author: "Étienne Boutet"
 	date: "20160220"
