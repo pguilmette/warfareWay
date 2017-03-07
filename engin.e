@@ -1,5 +1,5 @@
 note
-	description: "Summary description for {JEU}."
+	description: "Objet principal pour démarrer le jeu."
 	author: "Philippe Guilmette"
 	author: "Étienne Boutet"
 	date: "20160220"
@@ -33,7 +33,7 @@ feature {NONE} -- Initialization
 			l_window_builder.enable_must_renderer_synchronize_update
 			window := l_window_builder.generate_window
 			create test_image.make (window.renderer, "includes/images/background.jpg")
-			create test_minimap.make (window.renderer, "includes/images/minimap.jpg")
+			create test_minimap.make (window.renderer, "includes/images/comment_jouer.jpg")
 			if l_icon_image.is_openable then
 				l_icon_image.open
 				if l_icon_image.is_open then
@@ -82,7 +82,7 @@ feature {NONE} -- Implementation
 		do
 			if not a_key_state.is_repeat then
 				if a_key_state.is_tab then
-					window.renderer.draw_texture (test_minimap, 100, 75)
+					window.renderer.draw_texture (test_minimap, 50, 37)
 				end
 			end
 		end
