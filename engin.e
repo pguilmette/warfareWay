@@ -32,6 +32,7 @@ feature {NONE} -- Initialization
 			l_window_builder.set_title ("Warfare Way")
 			l_window_builder.enable_must_renderer_synchronize_update
 			window := l_window_builder.generate_window
+			create player.make (window.renderer)
 			create test_image.make (window.renderer, "includes/images/background.jpg")
 			create test_minimap.make (window.renderer, "includes/images/minimap.jpg")
 			if l_icon_image.is_openable then
@@ -51,6 +52,8 @@ feature -- Access
 			-- Partir le jeu
 		local
 		do
+			player.x := 375
+			player.y := 200
 			game_library.quit_signal_actions.extend (agent on_quit)
 			window.renderer.draw_texture (test_image, 0, 0)
 			window.key_pressed_actions.extend (agent on_key_pressed)
@@ -63,7 +66,7 @@ feature -- Access
 			end
 		end
 
-	window : GAME_WINDOW_RENDERED
+	window: GAME_WINDOW_RENDERED
 			-- La fenêtre principale du jeu
 
 	test_image: IMAGE
@@ -75,6 +78,9 @@ feature -- Access
 	game_music:MUSIQUE
 			-- Musique du jeu
 
+	player:JOUEUR
+			-- Personnage que l'utilisateur joue
+
 feature {NONE} -- Implementation
 
 	on_key_pressed(a_timestamp: NATURAL_32; a_key_state: GAME_KEY_STATE)
@@ -83,6 +89,14 @@ feature {NONE} -- Implementation
 			if not a_key_state.is_repeat then
 				if a_key_state.is_tab then
 					window.renderer.draw_texture (test_minimap, 100, 75)
+				elseif a_key_state.is_a then
+					player.go_left (a_timestamp)
+				elseif a_key_state.is_d then
+					player.go_right (a_timestamp)
+				elseif a_key_state.is_w then
+					player.go_up (a_timestamp)
+				elseif a_key_state.is_s then
+					player.go_down (a_timestamp)
 				end
 			end
 		end
@@ -93,13 +107,23 @@ feature {NONE} -- Implementation
 			if not a_key_state.is_repeat then
 				if a_key_state.is_tab then
 					window.renderer.draw_texture (test_image, 0, 0)
+				elseif a_key_state.is_a then
+					player.stop_left
+				elseif a_key_state.is_d then
+					player.stop_right
+				elseif a_key_state.is_w then
+					player.stop_up
+				elseif a_key_state.is_s then
+					player.stop_down
 				end
 			end
 		end
 
-	on_iteration(a_timestamp:NATURAL_32)
+	on_iteration(a_timestamp: NATURAL_32)
 			-- Événement qui s'exécute à chaque iteration
 		do
+			player.update (a_timestamp)
+			window.renderer.draw_texture (player, player.x, player.y)
 			window.renderer.present
 			audio_library.update
 		end

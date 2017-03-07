@@ -22,7 +22,6 @@ feature {NONE} -- Initialization
             -- Exécution du jeu
         local
         	l_engine : detachable ENGIN
-			l_test:AUDIBLE
         		-- L'engin principal du jeu
         do
         	mpg_library.enable_mpg
