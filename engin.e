@@ -88,7 +88,6 @@ feature {NONE} -- Implementation
 		do
 			if not a_key_state.is_repeat then
 				if a_key_state.is_tab then
-<<<<<<< HEAD
 					window.renderer.draw_texture (test_minimap, 100, 75)
 				elseif a_key_state.is_a then
 					player.go_left (a_timestamp)
@@ -98,9 +97,6 @@ feature {NONE} -- Implementation
 					player.go_up (a_timestamp)
 				elseif a_key_state.is_s then
 					player.go_down (a_timestamp)
-=======
-					window.renderer.draw_texture (test_minimap, 50, 37)
->>>>>>> c083b430f69ed46056044729f51d4b8cfaea577e
 				end
 			end
 		end

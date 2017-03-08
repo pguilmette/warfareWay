@@ -42,11 +42,14 @@ feature -- Accès
 			if going_left or going_right or going_up or going_down then
 				if going_left then
 					x := x - 2
-				elseif going_right then
+				end
+				if going_right then
 					x := x + 2
-				elseif going_up then
+				end
+				if going_up then
 					y := y - 2
-				elseif going_down  then
+				end
+				if going_down  then
 					y := y + 2
 				end
 			end
