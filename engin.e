@@ -15,7 +15,7 @@ inherit
 create
     make
 
-feature {NONE} -- Initialization
+feature {NONE} -- Initialisation
 
 	make
 			-- Initialisation de `Current'
@@ -47,7 +47,7 @@ feature {NONE} -- Initialization
 			end
 		end
 
-feature -- Access
+feature -- Accès
 	start_game
 			-- Partir le jeu
 		local
@@ -123,6 +123,7 @@ feature {NONE} -- Implementation
 			-- Événement qui s'exécute à chaque iteration
 		do
 			player.update (a_timestamp)
+			window.renderer.draw_texture (test_image, 0, 0)
 			window.renderer.draw_texture (player, player.x, player.y)
 			window.renderer.present
 			audio_library.update
