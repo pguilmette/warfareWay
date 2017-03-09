@@ -41,16 +41,16 @@ feature -- Accès
 		do
 			if going_left or going_right or going_up or going_down then
 				if going_left then
-					x := x - 2
+					x := x - speed
 				end
 				if going_right then
-					x := x + 2
+					x := x + speed
 				end
 				if going_up then
-					y := y - 2
+					y := y - speed
 				end
 				if going_down  then
-					y := y + 2
+					y := y + speed
 				end
 			end
 		end
@@ -138,5 +138,7 @@ feature -- Accès
 	going_down:BOOLEAN
 		-- Si `Current' va vers le bas
 
+	speed:INTEGER = 3
+		-- La vitesse du personnage
 
 end
