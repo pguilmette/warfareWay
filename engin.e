@@ -32,6 +32,7 @@ feature {NONE} -- Initialisation
 			l_window_builder.set_title ("Warfare Way")
 			l_window_builder.enable_must_renderer_synchronize_update
 			window := l_window_builder.generate_window
+			create cursor
 			create player.make (window.renderer)
 			create test_image.make (window.renderer, "includes/images/background.jpg")
 			create test_minimap.make (window.renderer, "includes/images/comment_jouer.jpg")
@@ -52,8 +53,11 @@ feature -- Accès
 			-- Partir le jeu
 		local
 		do
+			-- Initilisation des coordonnées
 			player.x := 375
 			player.y := 200
+
+			-- Évenements du jeu
 			game_library.quit_signal_actions.extend (agent on_quit)
 			window.renderer.draw_texture (test_image, 0, 0)
 			window.key_pressed_actions.extend (agent on_key_pressed)
@@ -80,6 +84,9 @@ feature -- Accès
 
 	player:JOUEUR
 			-- Personnage que l'utilisateur joue
+
+	cursor:CURSEUR
+			-- Curseur du joueur
 
 feature {NONE} -- Implementation
 
