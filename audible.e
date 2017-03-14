@@ -1,5 +1,5 @@
 note
-	description: "Summary description for {AUDIBLE}."
+	description: "Objet pour gérer le son du jeu."
 	author: "Philippe Guilmette"
 	author: "Étienne Boutet"
 	date: "20160220"
@@ -27,7 +27,7 @@ feature -- Accès
 	source:AUDIO_SOURCE
 		-- Source où les sons seront par la suite joués.
 	sound:AUDIO_SOUND_WAV_FILE
-		-- Son à faire joeur
+		-- Son à faire jouer
 
 	play_music
 		-- Permet de faire jouer la musique du jeu

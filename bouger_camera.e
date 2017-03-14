@@ -1,5 +1,5 @@
 note
-	description: "Summary description for {BOUGER_CAMERA}."
+	description: "Objet pour permettre le déplacement de la caméra dans le jeu."
 	author: "Philippe Guilmette"
 	author: "Étienne Boutet"
 	date: "20160220"

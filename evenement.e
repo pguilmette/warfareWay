@@ -1,5 +1,5 @@
 note
-	description: "Summary description for {EVENEMENT}."
+	description: "Objet pour les éléments des évènements qui sont communs."
 	author: "Philippe Guilmette"
 	author: "Étienne Boutet"
 	date: "20160220"

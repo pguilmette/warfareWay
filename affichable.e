@@ -1,5 +1,5 @@
 note
-	description: "Summary description for {AFFICHABLE}."
+	description: "Objet pour les éléments qui peuvent être affichés."
 	author: "Philippe Guilmette"
 	author: "Étienne Boutet"
 	date: "20160220"

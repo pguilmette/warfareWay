@@ -1,5 +1,5 @@
 note
-	description: "Summary description for {COUTEAU}."
+	description: "Objet pour le couteau."
 	author: "Philippe Guilmette"
 	author: "Étienne Boutet"
 	date: "20160220"

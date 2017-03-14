@@ -22,12 +22,10 @@ feature {NONE} -- Initialization
             -- Exécution du jeu
         local
         	l_engine : detachable ENGIN
-			l_test:AUDIBLE
         		-- L'engin principal du jeu
         do
         	mpg_library.enable_mpg
         	game_library.enable_video
-			game_library.hide_mouse_cursor
 			image_file_library.enable_image (true, false, true)
 			create l_engine.make
 			l_engine.start_game

@@ -1,5 +1,5 @@
 note
-	description: "Summary description for {EVENEMENT_PERSONNAGE}."
+	description: "Objet pour les évènements du personnage."
 	author: "Philippe Guilmette"
 	author: "Étienne Boutet"
 	date: "20160220"
