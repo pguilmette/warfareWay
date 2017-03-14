@@ -15,7 +15,7 @@
 		<library name="game_effects" location="$EIFFEL_LIBRARY\contrib\library\game2\game_effects\game_effects-safe.ecf"/>
 		<library name="game_image_file" location="$EIFFEL_LIBRARY\contrib\library\game2\game_image_file\game_image_file-safe.ecf"/>
 		<library name="game_text" location="$EIFFEL_LIBRARY\contrib\library\game2\game_text\game_text-safe.ecf"/>
-		<library name="thread" location="$ISE_LIBRARY\library\thread\threadsafe.ecf"/>
+		<library name="thread" location="$ISE_LIBRARY\library\thread\thread-safe.ecf"/>
 		<cluster name="warfareway" location=".\" recursive="true">
 			<file_rule>
 				<exclude>/EIFGENs$</exclude>
