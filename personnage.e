@@ -15,7 +15,7 @@ inherit
 
 feature {NONE} -- Implémentation
 	make(a_renderer:GAME_RENDERER; a_namefile:STRING)
-		-- Initialise `Current'
+			-- Initialise `Current'
 		local
 			l_image:IMG_IMAGE_FILE
 		do

@@ -13,7 +13,7 @@ inherit
 
 feature {NONE} -- Initialisation
 	make(a_namefile: STRING)
-		-- Initialise `Current'
+			-- Initialise `Current'
 		do
 			audio_library.enable_sound
 			audio_library.sources_add
@@ -25,19 +25,19 @@ feature {NONE} -- Initialisation
 feature -- Accès
 
 	source:AUDIO_SOURCE
-		-- Source où les sons seront par la suite joués.
+			-- Source où les sons seront par la suite joués.
 	sound:AUDIO_SOUND_WAV_FILE
-		-- Son à faire jouer
+			-- Son à faire jouer
 
 	play_music
-		-- Permet de faire jouer la musique du jeu
+			-- Permet de faire jouer la musique du jeu
 	do
 		source.queue_sound_infinite_loop (sound)
 		source.play
 	end
 
 	play_sound
-		-- Permet de faire jouer un son
+			-- Permet de faire jouer un son
 	do
 		source.queue_sound (sound)
 		source.play

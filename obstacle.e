@@ -4,7 +4,23 @@ note
 	author: "Étienne Boutet"
 	date: "20160220"
 
-class
+deferred class
 	OBSTACLE
+
+feature {NONE} -- Implémentation
+
+	make(a_renderer:GAME_RENDERER)
+		-- Initialise `Current'
+		do
+
+		end
+
+	width:INTEGER
+			-- La largeur de l'obstacle
+
+	height:INTEGER
+			-- La hauteur de l'obstacle
+
+feature -- Accès
 
 end
