@@ -7,4 +7,9 @@ note
 deferred class
 	ARMES_TIRE
 
+feature {NONE} -- Implémentation
+
+	bullet_speed:INTEGER
+			-- La vitesse de la balle du fusil
+
 end

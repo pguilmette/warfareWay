@@ -7,4 +7,21 @@ note
 class
 	ENNEMI
 
+inherit
+	PERSONNAGE
+		rename
+			make as make_personnage
+		end
+
+create
+	make
+
+feature {NONE} -- Implémentation
+
+	make(a_renderer:GAME_RENDERER)
+		-- Initialisation de `Current'
+		do
+			make_personnage(a_renderer, "includes/images/ennemi.png")
+		end
+
 end

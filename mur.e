@@ -7,4 +7,23 @@ note
 class
 	MUR
 
+inherit
+	OBSTACLE
+		rename
+			make as make_obstacle
+		end
+
+create
+	make
+
+feature {NONE} -- Implémentation
+
+	make
+			-- Initialise `Current'
+		do
+
+		end
+
+feature -- Accès
+
 end
