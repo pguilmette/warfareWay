@@ -129,19 +129,11 @@ feature {NONE} -- Implementation
 		do
 			print(player.width/2)
 			player.update (a_timestamp)
-<<<<<<< HEAD
-<<<<<<< HEAD
 			l_angle_rad := player.calculate_angle (cursor, player.x, player.y)
 			l_angle_degree := -(l_angle_rad * (180/3.1416))
 			window.renderer.draw_texture_with_rotation (player, player.x, player.y, 17, 20, l_angle_degree)
-=======
-			window.renderer.draw_texture (player, player.x, player.y)
->>>>>>> 4f1ed4ca47d4a306fb2cad0caba367baf3555afd
-=======
 			ennemy.update (a_timestamp)
-			window.renderer.draw_texture (player, player.x, player.y)
 			window.renderer.draw_texture (ennemy, ennemy.x, ennemy.y)
->>>>>>> f235960a546c1149f4bec2a6b0c8619679b5f8dd
 			window.renderer.present
 			audio_library.update
 		end
