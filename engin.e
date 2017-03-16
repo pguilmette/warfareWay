@@ -127,12 +127,12 @@ feature {NONE} -- Implementation
 		local
 			l_angle_rad, l_angle_degree: REAL_64
 		do
-			print(player.width/2)
+			window.renderer.clear
+			ennemy.update (a_timestamp)
 			player.update (a_timestamp)
 			l_angle_rad := player.calculate_angle (cursor, player.x, player.y)
 			l_angle_degree := -(l_angle_rad * (180/3.1416))
 			window.renderer.draw_texture_with_rotation (player, player.x, player.y, 17, 20, l_angle_degree)
-			ennemy.update (a_timestamp)
 			window.renderer.draw_texture (ennemy, ennemy.x, ennemy.y)
 			window.renderer.present
 			audio_library.update
