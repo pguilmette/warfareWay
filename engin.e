@@ -11,6 +11,7 @@ inherit
 	GAME_LIBRARY_SHARED
 	AUDIO_LIBRARY_SHARED
 	MPG_LIBRARY_SHARED
+	TEXT_LIBRARY_SHARED
 
 create
     make
@@ -34,8 +35,6 @@ feature {NONE} -- Initialisation
 			window := l_window_builder.generate_window
 			create cursor
 			create player.make (window.renderer)
-			create test_image.make (window.renderer, "includes/images/background.jpg")
-			create test_minimap.make (window.renderer, "includes/images/comment_jouer.jpg")
 			if l_icon_image.is_openable then
 				l_icon_image.open
 				if l_icon_image.is_open then
@@ -59,7 +58,6 @@ feature -- Accès
 
 			-- Évenements du jeu
 			game_library.quit_signal_actions.extend (agent on_quit)
-			window.renderer.draw_texture (test_image, 0, 0)
 			window.key_pressed_actions.extend (agent on_key_pressed)
 			window.key_released_actions.extend (agent on_key_released)
 			game_library.iteration_actions.extend (agent on_iteration)
@@ -72,12 +70,6 @@ feature -- Accès
 
 	window: GAME_WINDOW_RENDERED
 			-- La fenêtre principale du jeu
-
-	test_image: IMAGE
-			-- Le fond de la fenêtre pour tester
-
-	test_minimap: IMAGE
-			-- Une minimap pour tester les touches
 
 	game_music:MUSIQUE
 			-- Musique du jeu
@@ -94,9 +86,7 @@ feature {NONE} -- Implementation
 			-- Événement lorsqu'une touche est appuyée
 		do
 			if not a_key_state.is_repeat then
-				if a_key_state.is_tab then
-					window.renderer.draw_texture (test_minimap, 100, 75)
-				elseif a_key_state.is_a then
+				if a_key_state.is_a then
 					player.go_left (a_timestamp)
 				elseif a_key_state.is_d then
 					player.go_right (a_timestamp)
@@ -112,9 +102,7 @@ feature {NONE} -- Implementation
 			-- Événement lorsqu'une touche n'est plus appuyée
 		do
 			if not a_key_state.is_repeat then
-				if a_key_state.is_tab then
-					window.renderer.draw_texture (test_image, 0, 0)
-				elseif a_key_state.is_a then
+				if a_key_state.is_a then
 					player.stop_left
 				elseif a_key_state.is_d then
 					player.stop_right
@@ -130,7 +118,6 @@ feature {NONE} -- Implementation
 			-- Événement qui s'exécute à chaque iteration
 		do
 			player.update (a_timestamp)
-			window.renderer.draw_texture (test_image, 0, 0)
 			window.renderer.draw_texture (player, player.x, player.y)
 			window.renderer.present
 			audio_library.update

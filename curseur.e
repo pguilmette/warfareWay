@@ -28,7 +28,7 @@ feature {NONE} -- Implémentation
 
 	end
 
-	on_mouse_down(a_timestamp: NATURAL_32; a_mouse_state: GAME_MOUSE_BUTTON_RELEASED_STATE)
+	on_mouse_up(a_timestamp: NATURAL_32; a_mouse_state: GAME_MOUSE_BUTTON_RELEASED_STATE)
 		-- Lorsque l'utilisateur ne pèse plus sur la souris
 	do
 
