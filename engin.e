@@ -63,6 +63,7 @@ feature -- Accès
 			window.key_pressed_actions.extend (agent on_key_pressed)
 			window.key_released_actions.extend (agent on_key_released)
 			game_library.iteration_actions.extend (agent on_iteration)
+			window.mouse_motion_actions.extend (agent cursor.on_mouse_move)
 			if window.renderer.driver.is_present_synchronized_supported then
 				game_library.launch_no_delay
 			else
@@ -128,10 +129,14 @@ feature {NONE} -- Implementation
 
 	on_iteration(a_timestamp: NATURAL_32)
 			-- Événement qui s'exécute à chaque iteration
+		local
+			l_angle_rad, l_angle_degree: REAL_64
 		do
+			print(player.width/2)
 			player.update (a_timestamp)
-			window.renderer.draw_texture (test_image, 0, 0)
-			window.renderer.draw_texture (player, player.x, player.y)
+			l_angle_rad := player.calculate_angle (cursor, player.x, player.y)
+			l_angle_degree := -(l_angle_rad * (180/3.1416))
+			window.renderer.draw_texture_with_rotation (player, player.x, player.y, 17, 20, l_angle_degree)
 			window.renderer.present
 			audio_library.update
 		end
@@ -141,5 +146,4 @@ feature {NONE} -- Implementation
 		do
 			game_library.stop
 		end
-
 end

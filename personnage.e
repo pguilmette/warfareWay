@@ -1,4 +1,3 @@
-
 note
 	description: "Objet pour un personnage du jeu."
 	author: "Philippe Guilmette"
@@ -112,19 +111,19 @@ feature -- Accès
 	set_x(a_x:INTEGER)
 		-- Assigne la valeur de `x' avec `a_x'
 
-	do
-		x := a_x
-	ensure
-		Is_assign: x = a_x
-	end
+		do
+			x := a_x
+		ensure
+			Is_assign: x = a_x
+		end
 
 	set_y(a_y:INTEGER)
 		-- Assigne la valeur de `y' avec `a_y'
-	do
-		y := a_y
-	ensure
-		Is_assign: y = a_y
-	end
+		do
+			y := a_y
+		ensure
+			Is_assign: y = a_y
+		end
 
 	going_left:BOOLEAN
 		-- Si `Current' va vers la gauche
