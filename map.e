@@ -12,4 +12,9 @@ create
 
 feature {NONE} -- Initialisation
 
+	make
+		do
+			
+		end
+
 end
