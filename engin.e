@@ -25,7 +25,7 @@ feature {NONE} -- Initialisation
 			l_icon:GAME_SURFACE
 			l_window_builder:GAME_WINDOW_RENDERED_BUILDER
 			l_menu:MENU_PRINCIPAL
-			l_font:TEXT_FONT
+			--l_font:TEXT_FONT
 		do
 			create game_music.make
 			game_music.play_music
@@ -35,8 +35,8 @@ feature {NONE} -- Initialisation
 			l_window_builder.set_title ("Warfare Way")
 			l_window_builder.enable_must_renderer_synchronize_update
 			window := l_window_builder.generate_window
-			create l_font.make ("includes/fonts/Lobster-regular.ttf", 20)
-			create l_menu.make (window, l_font)
+			--create l_font.make ("includes/fonts/Lobster-regular.ttf", 20)
+			--create l_menu.make (window, l_font)
 			create cursor
 			create player.make (window.renderer)
 			create ennemy.make (window.renderer)
@@ -147,4 +147,12 @@ feature {NONE} -- Implementation
 		do
 			game_library.stop
 		end
+
+note
+	copyright: "Tous droits réservés (c) 2017, Étienne Boutet et Philippe Guilmette"
+	license:   "GNU General Public License v3.0"
+	source: "[
+			Cégep de Drummondville
+		]"
+
 end

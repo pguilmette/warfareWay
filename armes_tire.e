@@ -12,4 +12,11 @@ feature {NONE} -- Implémentation
 	bullet_speed:INTEGER
 			-- La vitesse de la balle du fusil
 
+note
+	copyright: "Tous droits réservés (c) 2017, Étienne Boutet et Philippe Guilmette"
+	license:   "GNU General Public License v3.0"
+	source: "[
+			Cégep de Drummondville
+		]"
+
 end
