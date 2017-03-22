@@ -24,4 +24,21 @@ feature {NONE} -- Initialisation
 
 		end
 
+feature -- Accès
+	velocity:INTEGER
+			-- La vitesse que le fond de {MAP} se déplace.
+
+	set_velocity (a_velocity:INTEGER)
+			-- Changer la vitesse du fond de {MAP} pour `a_velocity'.
+		require
+			Positive_velocity: a_velocity > 0
+		do
+			velocity := a_velocity
+		ensure
+			Is_assign: velocity = a_velocity
+		end
+
+invariant
+	velocity > 0
+
 end

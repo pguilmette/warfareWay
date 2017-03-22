@@ -27,6 +27,7 @@ feature {NONE} -- Initialization
 			window := a_window
 			window.renderer.set_drawing_color (create {GAME_COLOR}.make_rgb (128, 128, 128))
 			window.renderer.draw_filled_rectangle (0, 0, a_window.width, a_window.height)
+			window.key_pressed_actions.extend (agent on_key_pressed)
 			create how_to_play_image.make (window.renderer, "includes/images/how_to_play_img.jpg")
 			create l_asset_top.make (window.renderer, "includes/images/asset_top.png")
 			create l_asset_mid.make (window.renderer, "includes/images/asset_middle.png")
@@ -38,7 +39,6 @@ feature {NONE} -- Initialization
 			if not l_text_title.has_error then
 				--window.surface.draw_texture (l_text_title, 20, 20)
 			end
-			window.key_pressed_actions.extend (agent on_key_pressed)
 		end
 
 feature -- Accès
@@ -55,7 +55,7 @@ feature -- Accès
 	sections:ARRAYED_LIST[STRING]
 			-- La liste des sections du menu
 
-feature {NONE} -- Implementation
+feature {NONE} -- Implémentation
 
 	on_key_pressed(a_timestamp: NATURAL_32; a_key_state: GAME_KEY_STATE)
 			-- Événement lorsqu'une touche est appuyée
@@ -69,10 +69,14 @@ feature {NONE} -- Implementation
 
 	show_sections(a_text_sections:ARRAYED_LIST[STRING])
 			-- Affiche chaque section contenu dans `sections' dans le menu
+		require
+			a_text_sections.count > 0
 		local
-			height:INTEGER
 			Width:INTEGER
+			height:INTEGER
 		do
+			Width := 20
+			height := 100
 			across
 				a_text_sections as section
 			loop
