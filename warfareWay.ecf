@@ -21,7 +21,7 @@
 			<file_rule>
 				<exclude>/EIFGENs$</exclude>
 			</file_rule>
-			<cluster name="tests" location="C:\Users\Philippe\Desktop\CETI\PRB\warfareWay\tests\"/>
+			<tests name="tests" location="C:\Users\Philippe\Desktop\CETI\PRB\warfareWay\tests\"/>
 		</cluster>
 	</target>
 </system>

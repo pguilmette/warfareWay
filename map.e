@@ -7,14 +7,21 @@ note
 class
 	MAP
 
+inherit
+	IMAGE
+		redefine
+			make
+		end
+
 create
 	make
 
 feature {NONE} -- Initialisation
 
-	make
+	make(a_renderer:GAME_RENDERER)
+			-- <Precursor>
 		do
-			
+
 		end
 
 end

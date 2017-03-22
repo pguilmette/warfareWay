@@ -41,7 +41,7 @@ feature {NONE} -- Initialization
 			window.key_pressed_actions.extend (agent on_key_pressed)
 		end
 
-feature -- Access
+feature -- Accès
 
 	has_error:BOOLEAN
 			-- Devient `True' si une erreur survient durant la création de `Current'
@@ -52,7 +52,7 @@ feature -- Access
 	window:GAME_WINDOW_RENDERED
 			-- La fenêtre principale du jeu
 
-	--sections:ARRAYED_LIST[STRING]
+	sections:ARRAYED_LIST[STRING]
 			-- La liste des sections du menu
 
 feature {NONE} -- Implementation
@@ -68,10 +68,18 @@ feature {NONE} -- Implementation
 		end
 
 	show_sections(a_text_sections:ARRAYED_LIST[STRING])
-			-- Affiche chaque section contenu dans `l_textSections' dans le menu
+			-- Affiche chaque section contenu dans `sections' dans le menu
 		local
+			height:INTEGER
+			Width:INTEGER
 		do
-
+			across
+				a_text_sections as section
+			loop
+				Io.put_string(section.item)
+				Io.put_new_line
+				height := height + 30
+			end
 		end
 
 end

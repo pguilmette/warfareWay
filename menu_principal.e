@@ -21,8 +21,13 @@ feature {NONE} -- Initialization
 	make(a_window: GAME_WINDOW_RENDERED; a_font:TEXT_FONT)
 		local
 		do
-			make_base(a_window, a_font)
+			make_base (a_window, a_font)
+			create sections.make_from_array (<<"Solo", "Multijoueur", "Crédits", "Quitter">>)
+			show_sections (sections)
 		end
+
+feature -- Accès
+
 
 end
 

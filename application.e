@@ -22,7 +22,7 @@ feature {NONE} -- Initialization
             -- Exécution du jeu
         local
         	l_engine : detachable ENGIN
-        		-- L'engin principal du jeu
+        			-- L'engin principal du jeu
         do
         	mpg_library.enable_mpg
         	game_library.enable_video

@@ -19,7 +19,7 @@ create
 feature {NONE} -- Implémentation
 
 	make(a_renderer:GAME_RENDERER)
-		-- Initialisation de `Current'
+			-- Initialisation de `Current'
 		do
 			make_personnage(a_renderer, "includes/images/ennemi.png")
 		end
