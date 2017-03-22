@@ -9,23 +9,24 @@ class
 
 inherit
 	MENU
-		rename
-			make as make_base
+		redefine
+			make
 		end
 
 create
 	make
 
-feature {NONE} -- Initialization
+feature {NONE} -- Initialisation
 
 	make(a_window: GAME_WINDOW_RENDERED; a_font:TEXT_FONT)
-			-- Initialisation de `Current'
-		local
+			-- <Precursor>
 		do
-			make_base (a_window, a_font)
+			Precursor (a_window, a_font)
 			create sections.make_from_array (<<"Solo", "Multijoueur", "Crédits", "Quitter">>)
 			show_sections (sections)
 		end
+
+feature -- Accès
 
 end
 

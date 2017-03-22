@@ -21,10 +21,20 @@ feature {NONE} -- Initialisation
 	make(a_renderer:GAME_RENDERER)
 			-- <Precursor>
 		do
-
+			Precursor (a_renderer, "complete_map.jpg")
 		end
 
 feature -- Accès
+
+	background:IMAGE
+			-- Le fond de la {MAP}
+
+	height:INTEGER = 4800
+			-- La hauteur de la {MAP} complète
+
+	width:INTEGER = 6400
+			-- La largeur de la {MAP} complète
+
 	velocity:INTEGER
 			-- La vitesse que le fond de {MAP} se déplace.
 
