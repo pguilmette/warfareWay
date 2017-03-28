@@ -24,7 +24,7 @@ feature {NONE} -- Initialisation
 			l_icon_image:GAME_IMAGE_BMP_FILE
 			l_icon:GAME_SURFACE
 			l_window_builder:GAME_WINDOW_RENDERED_BUILDER
-			l_menu:MENU_PRINCIPAL
+			--l_menu:MENU_PRINCIPAL
 			--l_font:TEXT_FONT
 		do
 			create game_music.make
@@ -35,8 +35,10 @@ feature {NONE} -- Initialisation
 			l_window_builder.set_title ("Warfare Way")
 			l_window_builder.enable_must_renderer_synchronize_update
 			window := l_window_builder.generate_window
+			-- Temporairement bloqué pour tester le jeu
 			--create l_font.make ("includes/fonts/Lobster-regular.ttf", 20)
 			--create l_menu.make (window, l_font)
+			create map.make (window.renderer)
 			create cursor
 			create player.make (window.renderer)
 			create ennemy.make (window.renderer)
@@ -85,6 +87,9 @@ feature -- Accès
 
 	player:JOUEUR
 			-- Personnage que l'utilisateur joue
+
+	map:MAP
+			-- La carte du jeu
 
 	ennemy:ENNEMI
 			-- Un ennemi de la carte
