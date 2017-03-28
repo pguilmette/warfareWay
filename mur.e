@@ -16,13 +16,22 @@ inherit
 create
 	make
 
-feature {NONE} -- Implémentation
+feature {NONE} -- Initialisation
 
-	make
+	make (a_width, a_height, a_position_x, a_position_y:INTEGER)
 			-- Initialise `Current'
 		do
-
+			make_obstacle (a_width, a_height, a_position_x, a_position_y)
+			create color_rgb.make_from_array(<<0,0,0>>)
 		end
+
+feature -- Accès
+
+	color_rgb:ARRAYED_LIST[INTEGER]
+			-- Couleur du mur en RGB (dans cet ordre)
+
+invariant
+	color_rgb.capacity = 3
 
 note
 	copyright: "Tous droits réservés (c) 2017, Étienne Boutet et Philippe Guilmette"
