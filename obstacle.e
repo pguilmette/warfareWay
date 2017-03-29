@@ -12,10 +12,10 @@ feature {NONE} -- Implémentation
 	make(a_width, a_height, a_position_x, a_position_y:INTEGER)
 			-- Initialise `Current'
 		require
-			width >= 0
-			height >= 0
-			position_x >= 0
-			position_y >= 0
+			a_width > 0
+			a_height > 0
+			a_position_x >= 0
+			a_position_y >= 0
 		do
 			width := a_width
 			height := a_height

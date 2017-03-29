@@ -15,11 +15,16 @@ feature {NONE} -- Initialisation
 	make(a_renderer:GAME_RENDERER)
 			-- Initialisation de `Current'
 		do
-			create background.make (a_renderer, "complete_map.jpg")
-			create walls_array.make (17)
+			set_velocity (1)
+			create background.make (a_renderer, "includes/images/complete_map.jpg")
+			create walls_array.make (Walls_amount)
+			walls_creation
 		end
 
 feature -- Accès
+
+	Walls_amount:INTEGER = 13
+			-- Le nombre de {MUR} dans la {MAP}.
 
 	background:IMAGE
 			-- Le fond de la {MAP}
@@ -49,57 +54,28 @@ feature -- Accès
 feature {NONE} -- Implémentation
 
 	walls_creation
+			-- Crée tous les {MUR} de la {MAP}.
+		require
+			walls_array.capacity = Walls_amount
 		local
-			l_wall_1:MUR
-			l_wall_2:MUR
-			l_wall_3:MUR
-			l_wall_4:MUR
-			l_wall_5:MUR
-			l_wall_6:MUR
-			l_wall_7:MUR
-			l_wall_8:MUR
-			l_wall_9:MUR
-			l_wall_10:MUR
-			l_wall_11:MUR
-			l_wall_12:MUR
-			l_wall_13:MUR
-			l_wall_14:MUR
-			l_wall_15:MUR
-			l_wall_16:MUR
-			l_wall_17:MUR
+			l_mur_1:MUR
 		do
-			create l_wall_1.make (0,0,10,10)
-			create l_wall_2.make (0,0,0,0)
-			create l_wall_3.make (0,0,0,0)
-			create l_wall_4.make (0,0,0,0)
-			create l_wall_5.make (0,0,0,0)
-			create l_wall_6.make (0,0,0,0)
-			create l_wall_7.make (0,0,0,0)
-			create l_wall_8.make (0,0,0,0)
-			create l_wall_9.make (0,0,0,0)
-			create l_wall_10.make (0,0,0,0)
-			create l_wall_11.make (0,0,0,0)
-			create l_wall_12.make (0,0,0,0)
-			create l_wall_13.make (0,0,0,0)
-			create l_wall_14.make (0,0,0,0)
-			create l_wall_15.make (0,0,0,0)
-			create l_wall_16.make (0,0,0,0)
-			create l_wall_17.make (0,0,0,0)
+			walls_array.extend(create {MUR}.make (25,287,622,0))
+			walls_array.extend(create {MUR}.make (25,312,935,0))
+			walls_array.extend(create {MUR}.make (271,25,960,287))
+			walls_array.extend(create {MUR}.make (230,25,1370,287))
+			walls_array.extend(create {MUR}.make (282,25,0,641))
+			walls_array.extend(create {MUR}.make (204,25,443,641))
+			walls_array.extend(create {MUR}.make (25,237,622,404))
+			walls_array.extend(create {MUR}.make (25,643,935,557))
+			walls_array.extend(create {MUR}.make (271,25,960,557))
+			walls_array.extend(create {MUR}.make (230,25,1370,557))
+			walls_array.extend(create {MUR}.make (282,25,0,960))
+			walls_array.extend(create {MUR}.make (108,25,443,960))
+			walls_array.extend(create {MUR}.make (25,216,526,985))
+		ensure
+			walls_array.count = Walls_amount
 		end
-
-	make_contour
-		local
-			l_wall_up:MUR
-			l_wall_bottom:MUR
-			l_wall_left:MUR
-			l_wall_right:MUR
-		do
-			create l_wall_up.make (2000,10,0,0)
-			create l_wall_bottom.make (2000,10,10,10)
-			create l_wall_left.make (10,1000,0,10)
-			create l_wall_right.make (10,1000,2000,10)
-		end
-
 
 invariant
 	velocity > 0
