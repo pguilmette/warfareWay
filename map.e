@@ -16,7 +16,7 @@ feature {NONE} -- Initialisation
 			-- Initialisation de `Current'
 		do
 			create background.make (a_renderer, "complete_map.jpg")
-			create walls_array.make (17)
+			--create walls_array.make (17)
 		end
 
 feature -- Accès
@@ -24,7 +24,7 @@ feature -- Accès
 	background:IMAGE
 			-- Le fond de la {MAP}
 
-	walls_array:ARRAYED_LIST[MUR]
+	--walls_array:ARRAYED_LIST[MUR]
 			-- La liste de tous les murs de la carte.
 
 	total_height:INTEGER = 1200
@@ -63,43 +63,21 @@ feature {NONE} -- Implémentation
 			l_wall_11:MUR
 			l_wall_12:MUR
 			l_wall_13:MUR
-			l_wall_14:MUR
-			l_wall_15:MUR
-			l_wall_16:MUR
-			l_wall_17:MUR
 		do
-			create l_wall_1.make (0,0,10,10)
-			create l_wall_2.make (0,0,0,0)
-			create l_wall_3.make (0,0,0,0)
-			create l_wall_4.make (0,0,0,0)
-			create l_wall_5.make (0,0,0,0)
-			create l_wall_6.make (0,0,0,0)
-			create l_wall_7.make (0,0,0,0)
-			create l_wall_8.make (0,0,0,0)
-			create l_wall_9.make (0,0,0,0)
-			create l_wall_10.make (0,0,0,0)
-			create l_wall_11.make (0,0,0,0)
-			create l_wall_12.make (0,0,0,0)
-			create l_wall_13.make (0,0,0,0)
-			create l_wall_14.make (0,0,0,0)
-			create l_wall_15.make (0,0,0,0)
-			create l_wall_16.make (0,0,0,0)
-			create l_wall_17.make (0,0,0,0)
+			create l_wall_1.make (10,0,10,10)
+			create l_wall_2.make (10,0,0,0)
+			create l_wall_3.make (10,0,0,0)
+			create l_wall_4.make (10,0,0,0)
+			create l_wall_5.make (10,0,0,0)
+			create l_wall_6.make (0,10,0,0)
+			create l_wall_7.make (0,10,0,0)
+			create l_wall_8.make (0,10,0,0)
+			create l_wall_9.make (0,10,0,0)
+			create l_wall_10.make (0,10,0,0)
+			create l_wall_11.make (0,10,0,0)
+			create l_wall_12.make (0,10,0,0)
+			create l_wall_13.make (0,10,0,0)
 		end
-
-	make_contour
-		local
-			l_wall_up:MUR
-			l_wall_bottom:MUR
-			l_wall_left:MUR
-			l_wall_right:MUR
-		do
-			create l_wall_up.make (2000,10,0,0)
-			create l_wall_bottom.make (2000,10,10,10)
-			create l_wall_left.make (10,1000,0,10)
-			create l_wall_right.make (10,1000,2000,10)
-		end
-
 
 invariant
 	velocity > 0

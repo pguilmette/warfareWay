@@ -38,7 +38,7 @@ feature {NONE} -- Initialisation
 			-- Temporairement bloqué pour tester le jeu
 			--create l_font.make ("includes/fonts/Lobster-regular.ttf", 20)
 			--create l_menu.make (window, l_font)
-			--create map.make (window.renderer)
+			create map.make (window.renderer)
 			create cursor
 			create player.make (window.renderer)
 			create ennemy.make (window.renderer)
@@ -88,7 +88,7 @@ feature -- Accès
 	player:JOUEUR
 			-- Personnage que l'utilisateur joue
 
-	--map:MAP
+	map:MAP
 			-- La carte du jeu
 
 	ennemy:ENNEMI
