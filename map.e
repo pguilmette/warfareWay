@@ -12,32 +12,37 @@ create
 
 feature {NONE} -- Initialisation
 
-	make(a_renderer:GAME_RENDERER)
+	make(a_renderer:GAME_RENDERER; a_filename:STRING)
 			-- Initialisation de `Current'
 		do
-			create background.make (a_renderer, "complete_map.jpg")
-			--create walls_array.make (17)
+			set_velocity (1)
+			create background.make (a_renderer, a_filename)
+			create walls_array.make (Walls_amount)
+			walls_creation
 		end
 
 feature -- Accès
 
-	background:IMAGE
-			-- Le fond de la {MAP}
+	Walls_amount:INTEGER = 13
+			-- Le nombre de {MUR} de `Current'.
 
-	--walls_array:ARRAYED_LIST[MUR]
-			-- La liste de tous les murs de la carte.
+	background:IMAGE
+			-- Le fond de `Current'.
+
+	walls_array:ARRAYED_LIST[MUR]
+			-- La liste de tous les murs de `Current'.
 
 	total_height:INTEGER = 1200
-			-- La hauteur de la {MAP} complète.
+			-- La hauteur de la `Current' complète.
 
 	total_width:INTEGER = 1600
-			-- La largeur de la {MAP} complète.
+			-- La largeur de `Current' complète.
 
 	velocity:INTEGER
-			-- La vitesse que le fond de {MAP} se déplace.
+			-- La vitesse que le fond de `Current' se déplace.
 
 	set_velocity (a_velocity:INTEGER)
-			-- Changer la vitesse du fond de {MAP} pour `a_velocity'.
+			-- Changer la vitesse du fond de `Current' pour `a_velocity'.
 		require
 			Positive_velocity: a_velocity > 0
 		do
@@ -49,34 +54,25 @@ feature -- Accès
 feature {NONE} -- Implémentation
 
 	walls_creation
-		local
-			l_wall_1:MUR
-			l_wall_2:MUR
-			l_wall_3:MUR
-			l_wall_4:MUR
-			l_wall_5:MUR
-			l_wall_6:MUR
-			l_wall_7:MUR
-			l_wall_8:MUR
-			l_wall_9:MUR
-			l_wall_10:MUR
-			l_wall_11:MUR
-			l_wall_12:MUR
-			l_wall_13:MUR
+			-- Crée tous les {MUR} de `Current'.
+		require
+			walls_array.capacity = Walls_amount
 		do
-			create l_wall_1.make (10,0,10,10)
-			create l_wall_2.make (10,0,0,0)
-			create l_wall_3.make (10,0,0,0)
-			create l_wall_4.make (10,0,0,0)
-			create l_wall_5.make (10,0,0,0)
-			create l_wall_6.make (0,10,0,0)
-			create l_wall_7.make (0,10,0,0)
-			create l_wall_8.make (0,10,0,0)
-			create l_wall_9.make (0,10,0,0)
-			create l_wall_10.make (0,10,0,0)
-			create l_wall_11.make (0,10,0,0)
-			create l_wall_12.make (0,10,0,0)
-			create l_wall_13.make (0,10,0,0)
+			walls_array.extend(create {MUR}.make (25,287,622,0))
+			walls_array.extend(create {MUR}.make (25,312,935,0))
+			walls_array.extend(create {MUR}.make (271,25,960,287))
+			walls_array.extend(create {MUR}.make (230,25,1370,287))
+			walls_array.extend(create {MUR}.make (282,25,0,641))
+			walls_array.extend(create {MUR}.make (204,25,443,641))
+			walls_array.extend(create {MUR}.make (25,237,622,404))
+			walls_array.extend(create {MUR}.make (25,643,935,557))
+			walls_array.extend(create {MUR}.make (271,25,960,557))
+			walls_array.extend(create {MUR}.make (230,25,1370,557))
+			walls_array.extend(create {MUR}.make (282,25,0,960))
+			walls_array.extend(create {MUR}.make (108,25,443,960))
+			walls_array.extend(create {MUR}.make (25,216,526,985))
+		ensure
+			walls_array.count = Walls_amount
 		end
 
 invariant

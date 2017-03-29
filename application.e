@@ -12,6 +12,7 @@ inherit
 	GAME_LIBRARY_SHARED
 	IMG_LIBRARY_SHARED
 	MPG_LIBRARY_SHARED
+	TEXT_LIBRARY_SHARED
 
 create
     make
@@ -26,6 +27,7 @@ feature {NONE} -- Initialization
         do
         	mpg_library.enable_mpg
         	game_library.enable_video
+        	text_library.enable_text
 			image_file_library.enable_image (true, false, true)
 			create l_engine.make
 			l_engine.start_game

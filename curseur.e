@@ -22,7 +22,6 @@ feature -- Accès
 
 feature {NONE} -- Implémentation
 
-
 	on_mouse_down(a_timestamp: NATURAL_32; a_mouse_state: GAME_MOUSE_BUTTON_RELEASED_STATE)
 			-- Lorsque l'utilisateur pèse sur la souris
 	do

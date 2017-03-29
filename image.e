@@ -1,8 +1,8 @@
 note
 	description: "Objet pour créer une image à partir d'un fichier."
-	author: ""
-	date: "$Date$"
-	revision: "$Revision$"
+	author: "Philippe Guilmette"
+	author: "Étienne Boutet"
+	date: "20160328"
 
 class
 	IMAGE
