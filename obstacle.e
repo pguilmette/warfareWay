@@ -43,8 +43,8 @@ feature {NONE} -- Implémentation
 invariant
 	position_x >= 0
 	position_y >= 0
-	height >= 0
-	width >= 0
+	height > 0
+	width > 0
 
 note
 	copyright: "Tous droits réservés (c) 2017, Étienne Boutet et Philippe Guilmette"

@@ -24,25 +24,25 @@ feature {NONE} -- Initialisation
 feature -- Accès
 
 	Walls_amount:INTEGER = 13
-			-- Le nombre de {MUR} dans la {MAP}.
+			-- Le nombre de {MUR} de `Current'.
 
 	background:IMAGE
-			-- Le fond de la {MAP}
+			-- Le fond de `Current'.
 
 	walls_array:ARRAYED_LIST[MUR]
-			-- La liste de tous les murs de la carte.
+			-- La liste de tous les murs de `Current'.
 
 	total_height:INTEGER = 1200
-			-- La hauteur de la {MAP} complète.
+			-- La hauteur de la `Current' complète.
 
 	total_width:INTEGER = 1600
-			-- La largeur de la {MAP} complète.
+			-- La largeur de `Current' complète.
 
 	velocity:INTEGER
-			-- La vitesse que le fond de {MAP} se déplace.
+			-- La vitesse que le fond de `Current' se déplace.
 
 	set_velocity (a_velocity:INTEGER)
-			-- Changer la vitesse du fond de {MAP} pour `a_velocity'.
+			-- Changer la vitesse du fond de `Current' pour `a_velocity'.
 		require
 			Positive_velocity: a_velocity > 0
 		do
@@ -54,7 +54,7 @@ feature -- Accès
 feature {NONE} -- Implémentation
 
 	walls_creation
-			-- Crée tous les {MUR} de la {MAP}.
+			-- Crée tous les {MUR} de `Current'.
 		require
 			walls_array.capacity = Walls_amount
 		local
