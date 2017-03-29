@@ -137,6 +137,7 @@ feature {NONE} -- Implementation
 			l_angle_rad, l_angle_degree: REAL_64
 		do
 			window.renderer.clear
+			window.renderer.draw_sub_texture_with_scale (map.background, 0, 0, map.total_width, map.total_height, 0, 0, window.renderer.viewport.width, window.renderer.viewport.height)
 			ennemy.update (a_timestamp)
 			player.update (a_timestamp)
 			l_angle_rad := player.calculate_angle (cursor, player.x, player.y)
