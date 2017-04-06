@@ -20,8 +20,11 @@
 		<cluster name="warfareway" location=".\" recursive="true">
 			<file_rule>
 				<exclude>/EIFGENs$</exclude>
+				<exclude>/.git</exclude>
+				<exclude>/includes</exclude>
+				<exclude>.gitignore</exclude>
 			</file_rule>
-			<tests name="tests" location="C:\Users\Philippe\Desktop\CETI\PRB\warfareWay\tests\"/>
+			<tests name="tests" location="/tests"/>
 		</cluster>
 	</target>
 </system>

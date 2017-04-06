@@ -72,11 +72,11 @@ feature {NONE} -- Implémentation
 			walls_array.extend(create {MUR}.make (108,25,443,960))
 			walls_array.extend(create {MUR}.make (25,216,526,985))
 		ensure
-			walls_array.count = Walls_amount
+			Is_all_assign: walls_array.count = Walls_amount
 		end
 
 invariant
-	velocity > 0
+	Is_positive: velocity > 0
 
 note
 	copyright: "Tous droits réservés (c) 2017, Étienne Boutet et Philippe Guilmette"

@@ -1,5 +1,5 @@
 note
-	description: "Summary description for {CURSEUR}."
+	description: "Objet pour les actions de la souris."
 	author: ""
 	date: "$Date$"
 	revision: "$Revision$"

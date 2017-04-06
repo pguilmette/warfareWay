@@ -1,5 +1,5 @@
 note
-	description: "Summary description for {SON}."
+	description: "Objet pour l'ensemble des effets sonores du jeu."
 	author: ""
 	date: "$Date$"
 	revision: "$Revision$"

@@ -24,13 +24,13 @@ feature {NONE} -- Initialisation
 		end
 
 feature -- Accès
-	calculate_angle(cursor:CURSEUR; player_x:INTEGER; player_y:INTEGER): REAL_64
+	calculate_angle(a_cursor:CURSEUR; a_player_x:INTEGER; a_player_y:INTEGER): REAL_64
 			-- Permet de calculer l'angle entre le joueur et le curseur
 		local
 			l_x_distance, l_y_distance, l_angle: REAL_64
 		do
-			l_x_distance := cursor.last_x - player_x
-			l_y_distance := cursor.last_y - player_y
+			l_x_distance := a_cursor.last_x - a_player_x
+			l_y_distance := a_cursor.last_y - a_player_y
 			l_angle := atan2 (l_x_distance, l_y_distance)
 			Result := l_angle
 		end

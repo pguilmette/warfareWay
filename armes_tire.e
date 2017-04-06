@@ -11,6 +11,8 @@ feature {NONE} -- Implémentation
 
 	bullet_speed:INTEGER
 			-- La vitesse de la balle du fusil
+			
+invariant
 
 note
 	copyright: "Tous droits réservés (c) 2017, Étienne Boutet et Philippe Guilmette"

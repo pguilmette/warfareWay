@@ -13,16 +13,9 @@ feature {NONE} -- Initialization
 			-- Initialisation de `Current'
 		local
 			l_text_title:TEXT_SURFACE_BLENDED
-					-- Le texte à dessiner
-
 			l_asset_top:IMAGE
-					-- L'image dans le haut à droite du menu
-
 			l_asset_mid:IMAGE
-					-- L'image dans le centre à droite du menu
-
 			l_asset_bottom:IMAGE
-					-- L'image dans le bas à droite du menu
 		do
 			window := a_window
 			window.renderer.set_drawing_color (create {GAME_COLOR}.make_rgb (128, 128, 128))

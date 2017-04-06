@@ -48,7 +48,7 @@ feature -- Accès
 				if going_up then
 					y := y - speed
 				end
-				if going_down  then
+				if going_down then
 					y := y + speed
 				end
 			end
@@ -59,6 +59,7 @@ feature -- Accès
 		require
 			Is_not_going_left: going_left = False
 		do
+			going_right := False
 			going_left := True
 		end
 
@@ -67,6 +68,7 @@ feature -- Accès
 		require
 			Is_not_going_right: going_right = False
 		do
+			going_left := False
 			going_right := True
 		end
 
@@ -156,7 +158,9 @@ feature -- Accès
 			-- La vitesse du personnage
 
 invariant
-	speed > 0
+	Is_positive: speed > 0
+	Is_not_opposite: not (going_up AND going_down)
+	Is_not_opposite: not (going_left AND going_right)
 
 note
 	copyright: "Tous droits réservés (c) 2017, Étienne Boutet et Philippe Guilmette"
