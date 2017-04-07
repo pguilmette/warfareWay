@@ -97,16 +97,23 @@ feature -- Accès
 	cursor:CURSEUR
 			-- Curseur du joueur
 
-feature {NONE} -- Implementation
+feature {NONE} -- Implémentation
 
 	on_key_pressed(a_timestamp: NATURAL_32; a_key_state: GAME_KEY_STATE)
 			-- Événement lorsqu'une touche est appuyée
 		do
 			if not a_key_state.is_repeat then
-				if a_key_state.is_a then
+				if a_key_state.is_a AND a_key_state.is_d then
+					player.stop_left
+					player.stop_right
+				elseif a_key_state.is_a then
 					player.go_left (a_timestamp)
 				elseif a_key_state.is_d then
 					player.go_right (a_timestamp)
+				end
+				if a_key_state.is_w AND a_key_state.is_s then
+					player.stop_up
+					player.stop_down
 				elseif a_key_state.is_w then
 					player.go_up (a_timestamp)
 				elseif a_key_state.is_s then
@@ -119,13 +126,13 @@ feature {NONE} -- Implementation
 			-- Événement lorsqu'une touche n'est plus appuyée
 		do
 			if not a_key_state.is_repeat then
-				if a_key_state.is_a then
+				if a_key_state.is_a AND player.going_left then
 					player.stop_left
-				elseif a_key_state.is_d then
+				elseif a_key_state.is_d AND player.going_right then
 					player.stop_right
-				elseif a_key_state.is_w then
+				elseif a_key_state.is_w AND player.going_up then
 					player.stop_up
-				elseif a_key_state.is_s then
+				elseif a_key_state.is_s AND player.going_down then
 					player.stop_down
 				end
 			end
