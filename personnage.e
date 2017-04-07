@@ -159,8 +159,8 @@ feature -- Accès
 
 invariant
 	Is_positive: speed > 0
-	Is_not_opposite_horizontal: not (going_up AND going_down)
-	Is_not_opposite_vertical: not (going_left AND going_right)
+	Is_not_opposite_y: not (going_up AND going_down)
+	Is_not_opposite_x: not (going_left AND going_right)
 
 note
 	copyright: "Tous droits réservés (c) 2017, Étienne Boutet et Philippe Guilmette"
