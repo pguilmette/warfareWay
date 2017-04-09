@@ -48,28 +48,35 @@ feature {NONE} -- Implémentation
 feature
 
 	has_error:BOOLEAN
+			-- `True' si l'objet a une erreur.
 
 	image:GAME_TEXTURE
+			-- L'image à afficher.
 
 	start_x:INTEGER
+			-- La position de départ de `Current' sur l'axe horizontale.
 
 	start_y:INTEGER
+			-- La position de départ de `Current' sur l'axe verticale.
 
 	width:INTEGER
+			-- La largeur de `Current'.
 
 	height:INTEGER
+			-- La hauteur de `Current'.
 
 	rotation:REAL_64
+			-- La rotation de `Current' en degrées.
 
 	rotation_center_x:INTEGER
 
 	rotation_center_y:INTEGER
 
 	x:INTEGER assign set_x
-			-- Position horizontal de `Current'
+			-- Position horizontale de `Current'
 
 	y: INTEGER assign set_y
-			-- Position vertical de `Current'
+			-- Position verticale de `Current'
 
 	set_y(a_y:INTEGER)
 			-- Assigne la valeur de `y' avec `a_y'.

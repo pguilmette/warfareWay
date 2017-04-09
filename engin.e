@@ -24,8 +24,8 @@ feature {NONE} -- Initialisation
 			l_icon_image:GAME_IMAGE_BMP_FILE
 			l_icon:GAME_SURFACE
 			l_window_builder:GAME_WINDOW_RENDERED_BUILDER
+			l_font:TEXT_FONT
 			--l_menu:MENU_PRINCIPAL
-			--l_font:TEXT_FONT
 		do
 			create game_music.make
 			game_music.play_music
@@ -35,14 +35,17 @@ feature {NONE} -- Initialisation
 			l_window_builder.set_title ("Warfare Way")
 			l_window_builder.enable_must_renderer_synchronize_update
 			window := l_window_builder.generate_window
+			create l_font.make ("includes/fonts/Lobster-regular.ttf", 20)
 			-- Temporairement bloqué pour tester le jeu
-			--create l_font.make ("includes/fonts/Lobster-regular.ttf", 20)
 			--create l_menu.make (window, l_font)
-			--create map.make (window.renderer)
 			create cursor
 			create {LINKED_LIST[AFFICHABLE]} affichables.make
 			create player.make (window.renderer)
+			player.set_x (30)
+			player.set_y (30)
 			create ennemy.make (window.renderer)
+			ennemy.set_x (670)
+			ennemy.set_y (30)
 			create map.make (window.renderer)
 			affichables.extend (map)
 			affichables.extend (player)
@@ -143,8 +146,8 @@ feature {NONE} -- Implementation
 			player.calculate_angle (cursor)
 			across affichables as la_affichable loop
 				window.renderer.draw_sub_texture_with_rotation (la_affichable.item.image, la_affichable.item.start_x, la_affichable.item.start_y,
-				la_affichable.item.width, la_affichable.item.height, la_affichable.item.x, la_affichable.item.y, la_affichable.item.rotation_center_x,
-				la_affichable.item.rotation_center_y, la_affichable.item.rotation)
+					la_affichable.item.width, la_affichable.item.height, la_affichable.item.x, la_affichable.item.y, la_affichable.item.rotation_center_x,
+					la_affichable.item.rotation_center_y, la_affichable.item.rotation)
 			end
 
 			window.renderer.present
