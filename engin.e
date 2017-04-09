@@ -40,8 +40,13 @@ feature {NONE} -- Initialisation
 			--create l_menu.make (window, l_font)
 			--create map.make (window.renderer)
 			create cursor
+			create {LINKED_LIST[AFFICHABLE]} affichables.make
 			create player.make (window.renderer)
 			create ennemy.make (window.renderer)
+			create map.make (window.renderer)
+			affichables.extend (map)
+			affichables.extend (player)
+			affichables.extend (ennemy)
 			if l_icon_image.is_openable then
 				l_icon_image.open
 				if l_icon_image.is_open then
@@ -59,13 +64,6 @@ feature -- Accès
 			-- Partir le jeu
 		local
 		do
-			-- Initilisation des coordonnées
-			player.x := 375
-			player.y := 200
-
-			ennemy.x := 300
-			ennemy.y := 200
-
 			-- Évenements du jeu
 			game_library.quit_signal_actions.extend (agent on_quit)
 			window.key_pressed_actions.extend (agent on_key_pressed)
@@ -88,7 +86,7 @@ feature -- Accès
 	player:JOUEUR
 			-- Personnage que l'utilisateur joue
 
-	--map:MAP
+	map:MAP
 			-- La carte du jeu
 
 	ennemy:ENNEMI
@@ -96,6 +94,9 @@ feature -- Accès
 
 	cursor:CURSEUR
 			-- Curseur du joueur
+
+	affichables:CHAIN[AFFICHABLE]
+			-- Objets à afficher dans le `window'
 
 feature {NONE} -- Implementation
 
@@ -139,10 +140,13 @@ feature {NONE} -- Implementation
 			window.renderer.clear
 			ennemy.update (a_timestamp)
 			player.update (a_timestamp)
-			l_angle_rad := player.calculate_angle (cursor, player.x, player.y)
-			l_angle_degree := -(l_angle_rad * (180/3.1416))
-			window.renderer.draw_texture_with_rotation (player, player.x, player.y, 17, 20, l_angle_degree)
-			window.renderer.draw_texture (ennemy, ennemy.x, ennemy.y)
+			player.calculate_angle (cursor)
+			across affichables as la_affichable loop
+				window.renderer.draw_sub_texture_with_rotation (la_affichable.item.image, la_affichable.item.start_x, la_affichable.item.start_y,
+				la_affichable.item.width, la_affichable.item.height, la_affichable.item.x, la_affichable.item.y, la_affichable.item.rotation_center_x,
+				la_affichable.item.rotation_center_y, la_affichable.item.rotation)
+			end
+
 			window.renderer.present
 			audio_library.update
 		end

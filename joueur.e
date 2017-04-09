@@ -21,19 +21,30 @@ feature {NONE} -- Initialisation
 			-- Initialisation de `Current'
 		do
 			make_personnage(a_renderer, "includes/images/personnage.png")
+			start_x := 0
+			start_y := 0
+			demi_width := width/2
+			demi_height := height/2
 		end
 
 feature -- Accès
-	calculate_angle(cursor:CURSEUR; player_x:INTEGER; player_y:INTEGER): REAL_64
+	calculate_angle(cursor:CURSEUR)
 			-- Permet de calculer l'angle entre le joueur et le curseur
 		local
-			l_x_distance, l_y_distance, l_angle: REAL_64
+			l_x_distance, l_y_distance, l_angle, l_angle_degree: REAL_64
 		do
-			l_x_distance := cursor.last_x - player_x
-			l_y_distance := cursor.last_y - player_y
+			l_x_distance := cursor.last_x - (x + demi_width)
+			l_y_distance := cursor.last_y - (y + demi_height)
 			l_angle := atan2 (l_x_distance, l_y_distance)
-			Result := l_angle
+			l_angle_degree := -(l_angle * (180/3.1416))
+			rotation := l_angle_degree
 		end
+
+	demi_width:REAL_64
+			-- Moitié de la largeur de l'image
+
+	demi_height:REAL_64
+			-- Moitié de la hauteur de l'image
 
 feature {NONE} -- Implémentation
 
