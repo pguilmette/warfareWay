@@ -102,7 +102,7 @@ feature -- Accès
 	affichables:CHAIN[AFFICHABLE]
 			-- Objets à afficher dans le `window'
 
-feature {NONE} -- Implementation
+feature {NONE} -- Implémentation
 
 	on_key_pressed(a_timestamp: NATURAL_32; a_key_state: GAME_KEY_STATE)
 			-- Événement lorsqu'une touche est appuyée
@@ -140,10 +140,23 @@ feature {NONE} -- Implementation
 			-- Événement qui s'exécute à chaque iteration
 		do
 			window.renderer.clear
-			window.renderer.draw_sub_texture (map.image, 0, 0, 1600, 1200, -400, -300)
 			ennemy.update (a_timestamp)
 			player.update (a_timestamp)
 			player.calculate_angle (cursor)
+			across map.walls_array as la_wall loop
+				if player.going_right AND player.x <= 1200 AND player.y > 0 then
+					la_wall.item.set_x (la_wall.item.x - player.speed)
+				end
+				if player.going_left AND player.x > 0 AND player.y > 0 then
+					la_wall.item.set_x (la_wall.item.x + player.speed)
+				end
+				if player.going_up AND player.x > 0 AND player.y > 0  then
+					la_wall.item.set_y (la_wall.item.y + player.speed)
+				end
+				if player.going_down AND player.x < 1600 AND player.y < 1200  then
+					la_wall.item.set_y (la_wall.item.y - player.speed)
+				end
+			end
 			across affichables as la_affichable loop
 				window.renderer.draw_sub_texture_with_rotation (la_affichable.item.image, la_affichable.item.start_x, la_affichable.item.start_y,
 					la_affichable.item.width, la_affichable.item.height, la_affichable.item.x, la_affichable.item.y, la_affichable.item.rotation_center_x,

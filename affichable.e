@@ -176,6 +176,8 @@ feature
 		end
 
 invariant
+	width > 0
+	height > 0
 
 note
 	copyright: "Tous droits réservés (c) 2017, Étienne Boutet et Philippe Guilmette"
