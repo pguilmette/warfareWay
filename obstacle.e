@@ -17,22 +17,22 @@ feature {NONE} -- Implémentation
 			a_position_x >= 0
 			a_position_y >= 0
 		do
-			width := a_width
-			height := a_height
+--			width := a_width
+--			height := a_height
 			position_x := a_position_x
 			position_y := a_position_y
 		ensure
-			width = a_width
-			height = a_height
+--			width = a_width
+--			height = a_height
 			position_x = a_position_x
 			position_y = a_position_y
 		end
 
-	width:INTEGER
-			-- La largeur de `Current'
+--	width:INTEGER
+--			-- La largeur de `Current'
 
-	height:INTEGER
-			-- La hauteur de `Current'
+--	height:INTEGER
+--			-- La hauteur de `Current'
 
 	position_x:INTEGER
 			-- Position sur l'axe horizontale de `Current'
@@ -43,8 +43,8 @@ feature {NONE} -- Implémentation
 invariant
 	position_x >= 0
 	position_y >= 0
-	height > 0
-	width > 0
+--	height > 0
+--	width > 0
 
 note
 	copyright: "Tous droits réservés (c) 2017, Étienne Boutet et Philippe Guilmette"

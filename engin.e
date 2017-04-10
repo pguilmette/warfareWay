@@ -46,8 +46,9 @@ feature {NONE} -- Initialisation
 			create ennemy.make (window.renderer)
 			ennemy.set_x (670)
 			ennemy.set_y (30)
-			create map.make (window.renderer, "includes/images/test.jpg")
+			create map.make (window.renderer, "includes/images/complete_map.jpg")
 			affichables.extend (map)
+			affichables.append (map.walls_array)
 			affichables.extend (player)
 			affichables.extend (ennemy)
 			if l_icon_image.is_openable then
@@ -139,7 +140,7 @@ feature {NONE} -- Implementation
 			-- Événement qui s'exécute à chaque iteration
 		do
 			window.renderer.clear
-			window.renderer.draw_sub_texture (map.background, 0, 0, 1600, 1200, -400, -300)
+			window.renderer.draw_sub_texture (map.image, 0, 0, 1600, 1200, -400, -300)
 			ennemy.update (a_timestamp)
 			player.update (a_timestamp)
 			player.calculate_angle (cursor)

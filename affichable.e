@@ -45,6 +45,31 @@ feature {NONE} -- Implémentation
 			end
 		end
 
+	make_without_file(a_renderer:GAME_RENDERER; a_width, a_height, a_position_x, a_position_y:INTEGER)
+			-- Initialise `Current'
+		local
+			l_image:IMG_IMAGE_FILE
+			l_pixel_format:GAME_PIXEL_FORMAT
+			l_image_width_divise : REAL_64
+			l_image_height_divise : REAL_64
+		do
+			create l_pixel_format
+			l_pixel_format.set_bgra8888
+			has_error := False
+			x := a_position_x
+			y := a_position_y
+			start_x := 0
+			start_y := 0
+			width := a_width
+			height := a_height
+			l_image_width_divise := width/2
+			l_image_height_divise := width/2
+			rotation_center_x := l_image_width_divise.rounded
+			rotation_center_y := l_image_height_divise.rounded
+			rotation := 0
+			create image.make (a_renderer, l_pixel_format, a_width, a_height)
+		end
+
 feature
 
 	has_error:BOOLEAN
