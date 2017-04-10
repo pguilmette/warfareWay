@@ -7,6 +7,13 @@ note
 class
 	MAP
 
+inherit
+	AFFICHABLE
+		rename
+			make as make_map
+		end
+
+
 create
 	make
 
@@ -19,6 +26,7 @@ feature {NONE} -- Initialisation
 			create background.make (a_renderer, a_filename)
 			create walls_array.make (Walls_amount)
 			walls_creation
+			make_map (a_renderer, "includes/images/test.jpg")
 		end
 
 feature -- Accès

@@ -24,8 +24,8 @@ feature {NONE} -- Initialisation
 			l_icon_image:GAME_IMAGE_BMP_FILE
 			l_icon:GAME_SURFACE
 			l_window_builder:GAME_WINDOW_RENDERED_BUILDER
-			--l_menu:MENU_PRINCIPAL
 			l_font:TEXT_FONT
+			--l_menu:MENU_PRINCIPAL
 		do
 			create game_music.make
 			game_music.play_music
@@ -38,10 +38,18 @@ feature {NONE} -- Initialisation
 			create l_font.make ("includes/fonts/Lobster-regular.ttf", 20)
 			-- Temporairement bloqué pour tester le jeu
 			--create l_menu.make (window, l_font)
-			create map.make (window.renderer, "includes/images/complete_map.jpg")
 			create cursor
+			create {LINKED_LIST[AFFICHABLE]} affichables.make
 			create player.make (window.renderer)
+			player.set_x (30)
+			player.set_y (30)
 			create ennemy.make (window.renderer)
+			ennemy.set_x (670)
+			ennemy.set_y (30)
+			create map.make (window.renderer, "includes/images/test.jpg")
+			affichables.extend (map)
+			affichables.extend (player)
+			affichables.extend (ennemy)
 			if l_icon_image.is_openable then
 				l_icon_image.open
 				if l_icon_image.is_open then
@@ -59,13 +67,6 @@ feature -- Accès
 			-- Partir le jeu
 		local
 		do
-			-- Initilisation des coordonnées
-			player.x := 375
-			player.y := 200
-
-			ennemy.x := 300
-			ennemy.y := 200
-
 			-- Évenements du jeu
 			game_library.quit_signal_actions.extend (agent on_quit)
 			window.key_pressed_actions.extend (agent on_key_pressed)
@@ -96,6 +97,9 @@ feature -- Accès
 
 	cursor:CURSEUR
 			-- Curseur du joueur
+
+	affichables:CHAIN[AFFICHABLE]
+			-- Objets à afficher dans le `window'
 
 feature {NONE} -- Implementation
 
@@ -133,17 +137,18 @@ feature {NONE} -- Implementation
 
 	on_iteration(a_timestamp: NATURAL_32)
 			-- Événement qui s'exécute à chaque iteration
-		local
-			l_angle_rad, l_angle_degree: REAL_64
 		do
 			window.renderer.clear
 			window.renderer.draw_sub_texture (map.background, 0, 0, 1600, 1200, -400, -300)
 			ennemy.update (a_timestamp)
 			player.update (a_timestamp)
-			l_angle_rad := player.calculate_angle (cursor, player.x, player.y)
-			l_angle_degree := -(l_angle_rad * (180/3.1416))
-			window.renderer.draw_texture_with_rotation (player, player.x, player.y, 17, 20, l_angle_degree)
-			window.renderer.draw_texture (ennemy, ennemy.x, ennemy.y)
+			player.calculate_angle (cursor)
+			across affichables as la_affichable loop
+				window.renderer.draw_sub_texture_with_rotation (la_affichable.item.image, la_affichable.item.start_x, la_affichable.item.start_y,
+					la_affichable.item.width, la_affichable.item.height, la_affichable.item.x, la_affichable.item.y, la_affichable.item.rotation_center_x,
+					la_affichable.item.rotation_center_y, la_affichable.item.rotation)
+			end
+
 			window.renderer.present
 			audio_library.update
 		end

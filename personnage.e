@@ -8,30 +8,7 @@ deferred class
 	PERSONNAGE
 
 inherit
-	GAME_TEXTURE
-		rename
-			make as make_texture
-		end
-
-feature {NONE} -- Implémentation
-	make(a_renderer:GAME_RENDERER; a_namefile:STRING)
-			-- Initialise `Current'
-		local
-			l_image:IMG_IMAGE_FILE
-		do
-			has_error := False
-			create l_image.make(a_namefile)
-			if l_image.is_openable then
-				l_image.open
-				if l_image.is_open then
-					make_from_image (a_renderer, l_image)
-				else
-					has_error := True
-				end
-			else
-				has_error := True
-			end
-		end
+	AFFICHABLE
 
 feature -- Accès
 
@@ -120,27 +97,7 @@ feature -- Accès
 			going_down := False
 		end
 
-	x:INTEGER assign set_x
-			-- Position horizontal de `Current'
 
-	y: INTEGER assign set_y
-			-- Position vertical de `Current'
-
-	set_x(a_x:INTEGER)
-			-- Assigne la valeur de `x' avec `a_x'.
-		do
-			x := a_x
-		ensure
-			Is_assign: x = a_x
-		end
-
-	set_y(a_y:INTEGER)
-			-- Assigne la valeur de `y' avec `a_y'.
-		do
-			y := a_y
-		ensure
-			Is_assign: y = a_y
-		end
 
 	going_left:BOOLEAN
 			-- Si `Current' va vers la gauche
@@ -159,8 +116,8 @@ feature -- Accès
 
 invariant
 	Is_positive: speed > 0
-	Is_not_opposite: not (going_up AND going_down)
-	Is_not_opposite: not (going_left AND going_right)
+	Is_not_opposite_y: not (going_up AND going_down)
+	Is_not_opposite_x: not (going_left AND going_right)
 
 note
 	copyright: "Tous droits réservés (c) 2017, Étienne Boutet et Philippe Guilmette"
