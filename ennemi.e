@@ -14,14 +14,16 @@ inherit
 		end
 
 create
-	make
 
+	make
 feature {NONE} -- Implémentation
 
 	make(a_renderer:GAME_RENDERER)
 			-- Initialisation de `Current'
 		do
 			make_personnage(a_renderer, "includes/images/ennemi.png")
+			start_x := 0
+			start_y := 0
 		end
 
 note

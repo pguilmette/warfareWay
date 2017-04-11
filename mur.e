@@ -8,6 +8,10 @@ class
 	MUR
 
 inherit
+	AFFICHABLE
+		rename
+			make as make_affichable
+		end
 	OBSTACLE
 		rename
 			make as make_obstacle
@@ -18,7 +22,7 @@ create
 
 feature {NONE} -- Initialisation
 
-	make (a_width, a_height, a_position_x, a_position_y:INTEGER)
+	make (a_width, a_height, a_position_x, a_position_y:INTEGER; a_renderer:GAME_RENDERER)
 			-- Initialise `Current'
 		require
 			a_width > 0
@@ -26,7 +30,9 @@ feature {NONE} -- Initialisation
 			a_position_x >= 0
 			a_position_y >= 0
 		do
-			make_obstacle (a_width, a_height, a_position_x, a_position_y)
+			make_without_file (a_renderer, a_width, a_height, a_position_x, a_position_y)
+--			Bloqué temporairement
+--			make_obstacle (a_width, a_height, a_position_x, a_position_y)
 			create color_rgb.make_from_array(<<0,0,0>>)
 		ensure
 			color_rgb.count = 3

@@ -11,7 +11,7 @@ feature {NONE} -- Implémentation
 
 	bullet_speed:INTEGER
 			-- La vitesse de la balle du fusil
-			
+
 invariant
 
 note
