@@ -55,6 +55,7 @@ feature -- Accès
 			Is_not_going_up: going_up = False
 		do
 			going_up := True
+			going_down := False
 		end
 
 	go_down(a_timestamp:NATURAL_32)
@@ -63,6 +64,7 @@ feature -- Accès
 			Is_not_going_down: going_down = False
 		do
 			going_down := True
+			going_up := False
 		end
 
 	stop_left
