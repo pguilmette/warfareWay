@@ -9,6 +9,19 @@ class
 
 inherit
 	ANIMATION
+	ARMES
+
+create
+	make
+
+feature {NONE} -- Initialisation
+
+	make
+			-- Initialisation de `Current'.
+		do
+			damage := 100
+			weapon_filename := "includes/images/personnage_knife.png"
+		end
 
 note
 	copyright: "Tous droits réservés (c) 2017, Étienne Boutet et Philippe Guilmette"

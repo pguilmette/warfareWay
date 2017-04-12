@@ -17,22 +17,12 @@ feature {NONE} -- Implémentation
 			a_position_x >= 0
 			a_position_y >= 0
 		do
---			width := a_width
---			height := a_height
 			position_x := a_position_x
 			position_y := a_position_y
 		ensure
---			width = a_width
---			height = a_height
 			position_x = a_position_x
 			position_y = a_position_y
 		end
-
---	width:INTEGER
---			-- La largeur de `Current'
-
---	height:INTEGER
---			-- La hauteur de `Current'
 
 	position_x:INTEGER
 			-- Position sur l'axe horizontale de `Current'

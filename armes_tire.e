@@ -7,10 +7,19 @@ note
 deferred class
 	ARMES_TIRE
 
-feature {NONE} -- Implémentation
+inherit
+	ARMES
+
+feature -- Accès
 
 	bullet_speed:INTEGER
 			-- La vitesse de la balle du fusil
+
+	total_ammunition:INTEGER
+			-- Le nombre de balles du fusil au total.
+
+	clip_ammunition:INTEGER
+			-- Le nombre de balles du fusil par chargeur.
 
 invariant
 

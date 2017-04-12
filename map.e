@@ -8,11 +8,14 @@ class
 	MAP
 
 inherit
+	THREAD
+		rename
+			make as make_thread
+		end
 	AFFICHABLE
 		rename
 			make as make_map
 		end
-
 
 create
 	make
@@ -22,9 +25,12 @@ feature {NONE} -- Initialisation
 	make(a_renderer:GAME_RENDERER; a_filename:STRING)
 			-- Initialisation de `Current'
 		do
-			set_velocity (1)
+			make_thread
+			set_velocity (5)
 			create walls_array.make (Walls_amount)
+			create ennemy_array.make (Ennemy_amount)
 			walls_creation (a_renderer)
+			ennemy_creation (a_renderer)
 			make_map (a_renderer, "includes/images/complete_map.jpg")
 		end
 
@@ -33,8 +39,14 @@ feature -- Accès
 	Walls_amount:INTEGER = 13
 			-- Le nombre de {MUR} de `Current'.
 
+	Ennemy_amount:INTEGER = 6
+			-- Le nombre d'{ENNEMI} de `Current'.
+
 	walls_array:ARRAYED_LIST[AFFICHABLE]
 			-- La liste de tous les murs de `Current'.
+
+	ennemy_array:ARRAYED_LIST[AFFICHABLE]
+			-- La liste de tous les ennemis de `Current'.
 
 	total_height:INTEGER = 1200
 			-- La hauteur de la `Current' complète.
@@ -55,7 +67,37 @@ feature -- Accès
 			Is_assign: velocity = a_velocity
 		end
 
+	move_left
+			-- Change la position de `Current' vers la gauche.
+		do
+			x := x - velocity
+		end
+
+	move_right
+			-- Change la position de `Current' vers la droite.
+		do
+			x := x + velocity
+		end
+
+	move_up
+			-- Change la position de `Current' vers le haut.
+		do
+			y := y - velocity
+		end
+
+	move_down
+			-- Change la position de `Current' vers le bas.
+		do
+			y := y + velocity
+		end
+
 feature {NONE} -- Implémentation
+
+	execute
+			-- L'exécution du {THREAD}
+		do
+
+		end
 
 	walls_creation (a_renderer:GAME_RENDERER)
 			-- Crée tous les {MUR} de `Current'.
@@ -77,6 +119,21 @@ feature {NONE} -- Implémentation
 			walls_array.extend(create {MUR}.make (25,216,526,985, a_renderer))
 		ensure
 			Is_all_assign: walls_array.count = Walls_amount
+		end
+
+	ennemy_creation (a_renderer:GAME_RENDERER)
+			-- Crée tous les {ENNEMI} de `Current'.
+		require
+			ennemy_array.capacity = Ennemy_amount
+		do
+			ennemy_array.extend (create {ENNEMI}.make (670,30, a_renderer))
+			ennemy_array.extend (create {ENNEMI}.make (100,100, a_renderer))
+			ennemy_array.extend (create {ENNEMI}.make (100,100, a_renderer))
+			ennemy_array.extend (create {ENNEMI}.make (100,100, a_renderer))
+			ennemy_array.extend (create {ENNEMI}.make (100,100, a_renderer))
+			ennemy_array.extend (create {ENNEMI}.make (100,100, a_renderer))
+		ensure
+			Is_all_assign: ennemy_array.count = Ennemy_amount
 		end
 
 invariant

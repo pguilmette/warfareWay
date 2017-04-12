@@ -20,7 +20,10 @@ feature {NONE} -- Initialisation
 	make(a_renderer:GAME_RENDERER)
 			-- Initialisation de `Current'
 		do
-			make_personnage(a_renderer, "includes/images/personnage.png")
+			make_personnage(a_renderer, "includes/images/personnage_pistol.png")
+			create rifle.make (0)
+			create pistol.make
+			create knife.make
 			start_x := 0
 			start_y := 0
 			half_width := width/2
@@ -46,6 +49,15 @@ feature -- Accès
 
 	half_height:REAL_64
 			-- Moitié de la hauteur de l'image
+
+	rifle:FUSIL_AUTOMATIQUE
+			-- Le {FUSIL_AUTOMATIQUE} de `Current'.
+
+	pistol:PISTOLET
+			-- Le {PISTOLET} de `Current'.
+
+	knife:COUTEAU
+			-- Le {COUTEAU} de `Current'.
 
 feature {NONE} -- Implémentation
 

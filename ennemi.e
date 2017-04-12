@@ -14,17 +14,25 @@ inherit
 		end
 
 create
-
 	make
+
 feature {NONE} -- Implémentation
 
-	make(a_renderer:GAME_RENDERER)
+	make(a_x, a_y: INTEGER; a_renderer:GAME_RENDERER)
 			-- Initialisation de `Current'
 		do
-			make_personnage(a_renderer, "includes/images/ennemi.png")
-			start_x := 0
-			start_y := 0
+			make_personnage(a_renderer, "includes/images/ennemi_rifle.png")
+			create rifle.make (1)
+			start_x := a_x
+			start_y := a_y
 		end
+
+feature -- Accès
+
+	rifle:FUSIL_AUTOMATIQUE
+			-- Le {FUSIL_AUTOMATIQUE} de `Current'.
+
+invariant
 
 note
 	copyright: "Tous droits réservés (c) 2017, Étienne Boutet et Philippe Guilmette"

@@ -43,14 +43,13 @@ feature {NONE} -- Initialisation
 			create player.make (window.renderer)
 			player.set_x (30)
 			player.set_y (30)
-			create ennemy.make (window.renderer)
-			ennemy.set_x (670)
-			ennemy.set_y (30)
 			create map.make (window.renderer, "includes/images/complete_map.jpg")
+			map.launch
 			affichables.extend (map)
 			affichables.append (map.walls_array)
+			affichables.append (map.ennemy_array)
+			affichables.append (map.ennemy_array)
 			affichables.extend (player)
-			affichables.extend (ennemy)
 			if l_icon_image.is_openable then
 				l_icon_image.open
 				if l_icon_image.is_open then
@@ -92,9 +91,6 @@ feature -- Accès
 
 	map:MAP
 			-- La carte du jeu
-
-	ennemy:ENNEMI
-			-- Un ennemi de la carte
 
 	cursor:CURSEUR
 			-- Curseur du joueur
@@ -147,21 +143,20 @@ feature {NONE} -- Implémentation
 			-- Événement qui s'exécute à chaque iteration
 		do
 			window.renderer.clear
-			ennemy.update (a_timestamp)
 			player.update (a_timestamp)
 			player.calculate_angle (cursor)
 			across map.walls_array as la_wall loop
-				if player.going_right AND player.x <= 1200 AND player.y > 0 then
-					la_wall.item.set_x (la_wall.item.x - player.speed)
+				if player.going_right AND can_go_right then
+					la_wall.item.set_x (la_wall.item.x - map.velocity)
 				end
-				if player.going_left AND player.x > 0 AND player.y > 0 then
-					la_wall.item.set_x (la_wall.item.x + player.speed)
+				if player.going_left AND can_go_left then
+					la_wall.item.set_x (la_wall.item.x + map.velocity)
 				end
-				if player.going_up AND player.x > 0 AND player.y > 0  then
-					la_wall.item.set_y (la_wall.item.y + player.speed)
+				if player.going_up AND can_go_up then
+					la_wall.item.set_y (la_wall.item.y + map.velocity)
 				end
-				if player.going_down AND player.x < 1600 AND player.y < 1200  then
-					la_wall.item.set_y (la_wall.item.y - player.speed)
+				if player.going_down AND can_go_down then
+					la_wall.item.set_y (la_wall.item.y - map.velocity)
 				end
 			end
 			across affichables as la_affichable loop
@@ -178,6 +173,30 @@ feature {NONE} -- Implémentation
 			-- Appelé lorsque le 'X' est appuyé dans le coin
 		do
 			game_library.stop
+		end
+
+	can_go_up:BOOLEAN
+			-- Le `player' peut aller en haut.
+		do
+			Result := map.y - map.velocity >= 0
+		end
+
+	can_go_down:BOOLEAN
+			-- Le `player' peut aller en bas.
+		do
+			Result := map.y + window.renderer.output_size.height + map.velocity < map.height
+		end
+
+	can_go_left:BOOLEAN
+			-- Le `player' peut aller à gauche.
+		do
+			Result := map.x - map.velocity >= 0
+		end
+
+	can_go_right:BOOLEAN
+			-- Le `player' peut aller à droite.
+		do
+			Result := map.x + window.renderer.output_size.width + map.velocity < map.width
 		end
 
 note
