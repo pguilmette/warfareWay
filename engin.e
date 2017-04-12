@@ -146,16 +146,16 @@ feature {NONE} -- Implémentation
 			player.update (a_timestamp)
 			player.calculate_angle (cursor)
 			across map.walls_array as la_wall loop
-				if player.going_right AND can_go_right then
+				if player.going_right then
 					la_wall.item.set_x (la_wall.item.x - map.velocity)
 				end
-				if player.going_left AND can_go_left then
+				if player.going_left then
 					la_wall.item.set_x (la_wall.item.x + map.velocity)
 				end
-				if player.going_up AND can_go_up then
+				if player.going_up then
 					la_wall.item.set_y (la_wall.item.y + map.velocity)
 				end
-				if player.going_down AND can_go_down then
+				if player.going_down then
 					la_wall.item.set_y (la_wall.item.y - map.velocity)
 				end
 			end
