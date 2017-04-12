@@ -7,6 +7,9 @@ note
 deferred class
 	AFFICHABLE
 
+inherit
+	POSITION
+
 feature {NONE} -- Implémentation
 	make(a_renderer:GAME_RENDERER; a_namefile:STRING)
 			-- Initialise `Current'
@@ -70,7 +73,7 @@ feature {NONE} -- Implémentation
 			create image.make (a_renderer, l_pixel_format, a_width, a_height)
 		end
 
-feature
+feature -- Accès
 
 	has_error:BOOLEAN
 			-- `True' si l'objet a une erreur.
@@ -94,14 +97,16 @@ feature
 			-- La rotation de `Current' en degrées.
 
 	rotation_center_x:INTEGER
+			-- Centre de rotation en x de l'objet
 
 	rotation_center_y:INTEGER
+			-- Centre de rotation en y de l'objet
 
-	x:INTEGER assign set_x
-			-- Position horizontale de `Current'
+	x:INTEGER
+		-- Position en x de l'objet
 
-	y: INTEGER assign set_y
-			-- Position verticale de `Current'
+	y:INTEGER
+		--
 
 	set_y(a_y:INTEGER)
 			-- Assigne la valeur de `y' avec `a_y'.
@@ -174,6 +179,18 @@ feature
 		ensure
 			Is_assign: rotation_center_y = a_y
 		end
+
+	center_x:INTEGER
+		-- Centre en x de l'objet
+	do
+		result := x + width//2
+	end
+
+	center_y:INTEGER
+		-- Centre en y de l'objet
+	do
+		result := y + height//2
+	end
 
 invariant
 	width > 0

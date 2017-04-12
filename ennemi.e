@@ -24,6 +24,8 @@ feature {NONE} -- Implémentation
 			make_personnage(a_renderer, "includes/images/ennemi.png")
 			start_x := 0
 			start_y := 0
+			half_width := width/2
+			half_height := height/2
 		end
 
 note

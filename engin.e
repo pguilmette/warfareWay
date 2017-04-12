@@ -44,8 +44,8 @@ feature {NONE} -- Initialisation
 			player.set_x (30)
 			player.set_y (30)
 			create ennemy.make (window.renderer)
-			ennemy.set_x (670)
-			ennemy.set_y (30)
+			ennemy.set_x (270)
+			ennemy.set_y (100)
 			create map.make (window.renderer, "includes/images/complete_map.jpg")
 			affichables.extend (map)
 			affichables.append (map.walls_array)
@@ -150,6 +150,7 @@ feature {NONE} -- Implémentation
 			ennemy.update (a_timestamp)
 			player.update (a_timestamp)
 			player.calculate_angle (cursor)
+			ennemy.calculate_angle (player)
 			across map.walls_array as la_wall loop
 				if player.going_right AND player.x <= 1200 AND player.y > 0 then
 					la_wall.item.set_x (la_wall.item.x - player.speed)
