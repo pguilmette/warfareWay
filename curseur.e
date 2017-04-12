@@ -7,11 +7,20 @@ note
 class
 	CURSEUR
 
+inherit
+	POSITION
+		rename
+			center_x as last_x,
+			center_y as last_y
+		end
+
 feature -- Accès
-	last_x:INTEGER_32
-			-- Dernière position en x du curseur
-	last_y:INTEGER_32
-			-- Dernière position en y du curseur
+
+	last_x:INTEGER
+		-- Derniere position en x du curseur avant de quitter l'écran
+
+	last_y:INTEGER
+		-- Derniere position en y du curseur avant de quitter l'écran
 
 	on_mouse_move(a_timestamp: NATURAL_32; a_mouse_state: GAME_MOUSE_MOTION_STATE; a_delta_x, a_delta_y:INTEGER_32)
 			-- Lorsque le curseur bouge, change les information à partir de `a_mouse_state'
@@ -33,7 +42,6 @@ feature {NONE} -- Implémentation
 	do
 
 	end
-
 note
 	copyright: "Tous droits réservés (c) 2017, Étienne Boutet et Philippe Guilmette"
 	license:   "GNU General Public License v3.0"

@@ -25,6 +25,8 @@ feature {NONE} -- Implémentation
 			create rifle.make (1)
 			start_x := a_x
 			start_y := a_y
+			half_width := width/2
+			half_height := height/2
 		end
 
 feature -- Accès

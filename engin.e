@@ -43,6 +43,9 @@ feature {NONE} -- Initialisation
 			create player.make (window.renderer)
 			player.set_x (30)
 			player.set_y (30)
+			create ennemy.make (0,0, window.renderer)
+			ennemy.set_x (270)
+			ennemy.set_y (100)
 			create map.make (window.renderer, "includes/images/complete_map.jpg")
 			map.launch
 			affichables.extend (map)
@@ -50,6 +53,7 @@ feature {NONE} -- Initialisation
 			affichables.append (map.ennemy_array)
 			affichables.append (map.ennemy_array)
 			affichables.extend (player)
+			affichables.extend (ennemy)
 			if l_icon_image.is_openable then
 				l_icon_image.open
 				if l_icon_image.is_open then
@@ -91,6 +95,9 @@ feature -- Accès
 
 	map:MAP
 			-- La carte du jeu
+
+	ennemy:ENNEMI
+			-- Un ennemi de la carte
 
 	cursor:CURSEUR
 			-- Curseur du joueur
@@ -145,6 +152,7 @@ feature {NONE} -- Implémentation
 			window.renderer.clear
 			player.update (a_timestamp)
 			player.calculate_angle (cursor)
+			ennemy.calculate_angle (player)
 			across map.walls_array as la_wall loop
 				if player.going_right then
 					la_wall.item.set_x (la_wall.item.x - map.velocity)

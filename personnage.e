@@ -99,7 +99,23 @@ feature -- Accès
 			going_down := False
 		end
 
+	calculate_angle(a_position:POSITION)
+			-- Permet de calculer l'angle entre le joueur et le curseur
+		local
+			l_x_distance, l_y_distance, l_angle, l_angle_degree: REAL_64
+		do
+			l_x_distance := a_position.center_x - (x + half_width)
+			l_y_distance := a_position.center_y - (y + half_height)
+			l_angle := atan2 (l_x_distance, l_y_distance)
+			l_angle_degree := -(l_angle * (180/3.1416))
+			rotation := l_angle_degree
+		end
 
+	half_width:REAL_64
+			-- Moitié de la largeur de l'image
+
+	half_height:REAL_64
+			-- Moitié de la hauteur de l'image
 
 	going_left:BOOLEAN
 			-- Si `Current' va vers la gauche
@@ -115,6 +131,16 @@ feature -- Accès
 
 	speed:INTEGER = 3
 			-- La vitesse du personnage
+
+feature {NONE} -- Implémentation
+
+	atan2 (distance_x, distance_y: REAL_64): REAL_64
+			-- Pour calculer l'angle du personnage
+	    external
+	        "C signature (double, double): double use <math.h>"
+	    alias
+	        "atan2"
+	    end
 
 invariant
 	Is_positive: speed > 0
