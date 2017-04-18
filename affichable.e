@@ -51,7 +51,6 @@ feature {NONE} -- Implémentation
 	make_without_file(a_renderer:GAME_RENDERER; a_width, a_height, a_position_x, a_position_y:INTEGER)
 			-- Initialise `Current'
 		local
-			l_image:IMG_IMAGE_FILE
 			l_pixel_format:GAME_PIXEL_FORMAT
 			l_image_width_divise : REAL_64
 			l_image_height_divise : REAL_64
