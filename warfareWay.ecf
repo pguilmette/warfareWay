@@ -17,6 +17,7 @@
 		<library name="game_text" location="$EIFFEL_LIBRARY\contrib\library\game2\game_text\game_text-safe.ecf"/>
 		<library name="testing" location="$ISE_LIBRARY\library\testing\testing-safe.ecf"/>
 		<library name="thread" location="$ISE_LIBRARY\library\thread\thread-safe.ecf"/>
+		<library name="net" location="$ISE_LIBRARY\library\net\net.ecf"/>
 		<cluster name="warfareway" location=".\" recursive="true">
 			<file_rule>
 				<exclude>/EIFGENs$</exclude>

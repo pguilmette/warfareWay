@@ -8,10 +8,6 @@ class
 	MAP
 
 inherit
-	THREAD
-		rename
-			make as make_thread
-		end
 	AFFICHABLE
 		rename
 			make as make_map
@@ -25,7 +21,6 @@ feature {NONE} -- Initialisation
 	make(a_renderer:GAME_RENDERER; a_filename:STRING)
 			-- Initialisation de `Current'
 		do
-			make_thread
 			set_velocity (5)
 			create walls_array.make (Walls_amount)
 			create ennemy_array.make (Ennemy_amount)
@@ -92,12 +87,6 @@ feature -- Accès
 		end
 
 feature {NONE} -- Implémentation
-
-	execute
-			-- L'exécution du {THREAD}
-		do
-
-		end
 
 	walls_creation (a_renderer:GAME_RENDERER)
 			-- Crée tous les {MUR} de `Current'.

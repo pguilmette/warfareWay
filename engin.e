@@ -39,20 +39,25 @@ feature {NONE} -- Initialisation
 			-- Temporairement bloqué pour tester le jeu
 			--create l_menu.make (window, l_font)
 			create cursor
+			create en_ligne.make
 			create {LINKED_LIST[AFFICHABLE]} affichables.make
 			create player.make (window.renderer)
 			player.set_x (30)
 			player.set_y (30)
+			create player_2.make (window.renderer)
+			player_2.set_x (400)
+			player_2.set_y (200)
 			create ennemy.make (0,0, window.renderer)
 			ennemy.set_x (270)
 			ennemy.set_y (100)
 			create map.make (window.renderer, "includes/images/complete_map.jpg")
-			map.launch
+			en_ligne.launch
 			affichables.extend (map)
 			affichables.append (map.walls_array)
 			affichables.append (map.ennemy_array)
 			affichables.append (map.ennemy_array)
 			affichables.extend (player)
+			affichables.extend (player_2)
 			affichables.extend (ennemy)
 			if l_icon_image.is_openable then
 				l_icon_image.open
@@ -93,6 +98,9 @@ feature -- Accès
 	player:JOUEUR
 			-- Personnage que l'utilisateur joue
 
+	player_2:JOUEUR
+			-- Le joueur adverse
+
 	map:MAP
 			-- La carte du jeu
 
@@ -101,6 +109,9 @@ feature -- Accès
 
 	cursor:CURSEUR
 			-- Curseur du joueur
+
+	en_ligne:MULTIJOUEUR
+			-- Le module pour jouer en ligne
 
 	affichables:CHAIN[AFFICHABLE]
 			-- Objets à afficher dans le `window'
