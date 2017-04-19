@@ -20,6 +20,7 @@ feature {NONE} -- Initialisation
 		require
 			Is_positive: a_character_type >= 0 and a_character_type < 2
 		do
+			make_thread
 			bullet_speed := 10
 			total_ammunition := 60
 			clip_ammunition := 30

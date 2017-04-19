@@ -8,6 +8,10 @@ deferred class
 	ARMES_TIRE
 
 inherit
+	THREAD
+		rename
+			make as make_thread
+		end
 	ARMES
 
 feature -- Accès
@@ -68,9 +72,16 @@ feature {NONE} -- Implémentation
 			reloading = false
 		do
 			reloading := true
-			total_ammunition := total_ammunition - clip_ammunition
+			total_ammunition := total_ammunition // clip_ammunition
 		ensure
 			Is_assign_reloading: reloading = true
+		end
+
+	execute
+			-- L'exécution du {THREAD}.
+		do
+			sleep (reload_time * (1000000000))
+			reload
 		end
 
 invariant

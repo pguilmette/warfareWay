@@ -18,6 +18,7 @@ feature {NONE} -- Initialisation
 	make
 			-- Initialisation de `Current'.
 		do
+			make_thread
 			bullet_speed := 10
 			total_ammunition := 24
 			clip_ammunition := 8
