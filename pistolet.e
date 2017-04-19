@@ -20,7 +20,9 @@ feature {NONE} -- Initialisation
 		do
 			make_thread
 			bullet_speed := 10
+			initial_total_ammunition := 24
 			total_ammunition := 24
+			initial_clip_ammunition := 8
 			clip_ammunition := 8
 			damage := 10
 			rate_of_fire := 0.5

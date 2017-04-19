@@ -16,10 +16,10 @@ inherit
 
 feature -- Accès
 
-	Initial_ammunition:INTEGER
+	initial_total_ammunition:INTEGER
 			-- Le nombre de balles de `Current' au total lorsqu'il est plein.
 
-	Initial_clip_ammunition:INTEGER
+	initial_clip_ammunition:INTEGER
 			-- Le nombre de balles de `Current' d'un chargeur lorsqu'il est plein.
 
 	bullet_speed:INTEGER
@@ -78,11 +78,14 @@ feature -- Accès
 		local
 			Second_in_nanoseconds:INTEGER_64
 		do
-			Second_in_nanoseconds := 1000000000
-			reloading := true
-			sleep (reload_time * (Second_in_nanoseconds))
-			-- à faire
-			reloading := false
+			if clip_ammunition < initial_clip_ammunition then
+
+			else
+				Second_in_nanoseconds := 1000000000
+				reloading := true
+				sleep (reload_time * (Second_in_nanoseconds))
+				reloading := false
+			end
 		end
 
 
@@ -95,6 +98,8 @@ feature {NONE} -- Implémentation
 		end
 
 invariant
+	Is_initial_total_ammunition_positive: initial_total_ammunition >= 0
+	Is_initial_clip_ammunition_positive: initial_clip_ammunition >= 0
 	Is_total_ammunition_positive: total_ammunition >= 0
 	Is_clip_ammunition_positive: clip_ammunition >= 0
 	Is_rate_of_fire_positive: rate_of_fire > 0
