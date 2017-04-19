@@ -154,6 +154,9 @@ feature {NONE} -- Implémentation
 				elseif a_key_state.is_s AND player.going_down then
 					player.stop_down
 				end
+				if a_key_state.is_r then
+					player.rifle.launch
+				end
 			end
 		end
 

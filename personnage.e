@@ -132,6 +132,9 @@ feature -- Accès
 	speed:INTEGER = 3
 			-- La vitesse du personnage
 
+	active_weapon:INTEGER
+			-- L'{ARMES} présentement utilisé par `Current'.
+
 feature {NONE} -- Implémentation
 
 	atan2 (distance_x, distance_y: REAL_64): REAL_64

@@ -29,7 +29,7 @@ feature -- Accès
 		do
 			total_ammunition := a_total_bullets_left
 		ensure
-			Is_assign: total_ammunition = a_total_bullets_left
+			Is_total_ammunition_assign: total_ammunition = a_total_bullets_left
 		end
 
 	clip_ammunition:INTEGER
@@ -42,19 +42,20 @@ feature -- Accès
 		do
 			clip_ammunition := a_bullets_left
 		ensure
-			Is_assign: clip_ammunition = a_bullets_left
+			Is_clip_ammunition_assign: clip_ammunition = a_bullets_left
 		end
 
 	rate_of_fire:REAL
-			-- La cadance de tir du fusil (temps entre chaque balle).
+			-- La cadance de tir du fusil (temps entre chaque balle en secondes).
 
 	reloading:BOOLEAN
 			-- `True' si `Current' est en rechargement.
 
-	reload_time:INTEGER = 3
+	reload_time:INTEGER_64 = 3
 			-- Le temps à recharger `Current' en secondes.
 
 	shoot_weapon
+			-- Tire les balles de `Current'.
 		require
 			total_ammunition > 0
 			clip_ammunition > 0
@@ -64,31 +65,34 @@ feature -- Accès
 			total_ammunition := total_ammunition - 1
 		end
 
+	reload
+			-- Recharge les balles de `Current'.
+		require
+			total_ammunition > clip_ammunition
+		local
+			Second_in_nanoseconds:INTEGER_64
+		do
+			Second_in_nanoseconds := 1000000000
+			reloading := true
+			sleep (reload_time * (Second_in_nanoseconds))
+			total_ammunition := total_ammunition \\ clip_ammunition
+			reloading := false
+		end
+
 
 feature {NONE} -- Implémentation
-
-	reload
-		require
-			reloading = false
-		do
-			reloading := true
-			total_ammunition := total_ammunition // clip_ammunition
-		ensure
-			Is_assign_reloading: reloading = true
-		end
 
 	execute
 			-- L'exécution du {THREAD}.
 		do
-			sleep (reload_time * (1000000000))
 			reload
 		end
 
 invariant
-	total_ammunition >= 0
-	clip_ammunition >= 0
-	rate_of_fire > 0
-	bullet_speed > 0
+	Is_total_ammunition_positive: total_ammunition >= 0
+	Is_clip_ammunition_positive: clip_ammunition >= 0
+	Is_rate_of_fire_positive: rate_of_fire > 0
+	Is_bullet_speed_positive: bullet_speed > 0
 
 note
 	copyright: "Tous droits réservés (c) 2017, Étienne Boutet et Philippe Guilmette"
