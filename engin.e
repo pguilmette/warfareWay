@@ -186,7 +186,6 @@ feature {NONE} -- Implémentation
 					la_affichable.item.width, la_affichable.item.height, la_affichable.item.x, la_affichable.item.y, la_affichable.item.rotation_center_x,
 					la_affichable.item.rotation_center_y, la_affichable.item.rotation)
 			end
-
 			window.renderer.present
 			audio_library.update
 		end

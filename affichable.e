@@ -105,7 +105,7 @@ feature -- Accès
 		-- Position en x de l'objet
 
 	y:INTEGER
-		--
+		-- Position en y de l'objet
 
 	set_y(a_y:INTEGER)
 			-- Assigne la valeur de `y' avec `a_y'.

@@ -146,7 +146,9 @@ feature {NONE} -- Implémentation
 	    end
 
 invariant
-	Is_positive: speed > 0
+	Is_half_width_positive: half_width >= 2
+	Is_half_height_positive: half_height >= 2
+	Is_speed_positive: speed > 0
 	Is_not_opposite_y: not (going_up AND going_down)
 	Is_not_opposite_x: not (going_left AND going_right)
 
