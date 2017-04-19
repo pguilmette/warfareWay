@@ -25,7 +25,7 @@
 				<exclude>/includes</exclude>
 				<exclude>.gitignore</exclude>
 			</file_rule>
-			<tests name="tests" location="\tests"/>
+			<tests name="tests" location=".\tests"/>
 		</cluster>
 	</target>
 </system>
