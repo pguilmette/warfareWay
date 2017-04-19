@@ -16,12 +16,17 @@ inherit
 
 feature -- Accès
 
+	Initial_ammunition:INTEGER
+			-- Le nombre de balles de `Current' au total lorsqu'il est plein.
+
+	Initial_clip_ammunition:INTEGER
+			-- Le nombre de balles de `Current' d'un chargeur lorsqu'il est plein.
+
 	bullet_speed:INTEGER
 			-- La vitesse de la balle du fusil
 
 	total_ammunition:INTEGER
 			-- Le nombre de balles du fusil au total.
-		
 
 	set_total_ammunition (a_total_bullets_left:INTEGER)
 			-- Changer le nombre de balles restantes total de `Current' pour `a_total_bullets_left'.
@@ -76,7 +81,7 @@ feature -- Accès
 			Second_in_nanoseconds := 1000000000
 			reloading := true
 			sleep (reload_time * (Second_in_nanoseconds))
-			total_ammunition := total_ammunition \\ clip_ammunition
+			-- à faire
 			reloading := false
 		end
 
