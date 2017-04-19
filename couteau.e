@@ -21,6 +21,8 @@ feature {NONE} -- Initialisation
 		do
 			damage := 100
 			weapon_filename := "includes/images/personnage_knife.png"
+		ensure
+			Has_damage_100: damage = 100
 		end
 
 note
