@@ -1,8 +1,8 @@
 note
-	description: "Summary description for {MULTIJOUEUR}."
-	author: ""
-	date: "$Date$"
-	revision: "$Revision$"
+	description: "Objet pour pouvoir jouer en ligne."
+	author: "Philippe Guilmette"
+	author: "Étienne Boutet"
+	date: "20170419"
 
 class
 	MULTIJOUEUR

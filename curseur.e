@@ -1,8 +1,8 @@
 note
 	description: "Objet pour les actions de la souris."
-	author: ""
-	date: "$Date$"
-	revision: "$Revision$"
+	author: "Philippe Guilmette"
+	author: "Étienne Boutet"
+	date: "20170419"
 
 class
 	CURSEUR

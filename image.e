@@ -2,7 +2,7 @@ note
 	description: "Objet pour créer une image à partir d'un fichier."
 	author: "Philippe Guilmette"
 	author: "Étienne Boutet"
-	date: "20160328"
+	date: "20170328"
 
 class
 	IMAGE

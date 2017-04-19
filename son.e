@@ -1,8 +1,8 @@
 note
 	description: "Objet pour l'ensemble des effets sonores du jeu."
-	author: ""
-	date: "$Date$"
-	revision: "$Revision$"
+	author: "Philippe Guilmette"
+	author: "Étienne Boutet"
+	date: "20170419"
 
 class
 	SON

@@ -1,8 +1,8 @@
 note
-	description: "Summary description for {POSITION}."
-	author: ""
-	date: "$Date$"
-	revision: "$Revision$"
+	description: "Objet pour la position centrale."
+	author: "Philippe Guilmette"
+	author: "Étienne Boutet"
+	date: "20170419"
 
 deferred class
 	POSITION

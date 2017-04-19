@@ -2,7 +2,7 @@ note
 	description: "Objet principal pour démarrer le jeu."
 	author: "Philippe Guilmette"
 	author: "Étienne Boutet"
-	date: "20160220"
+	date: "20170220"
 
 class
 	ENGIN

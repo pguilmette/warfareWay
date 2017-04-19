@@ -1,8 +1,8 @@
 note
 	description: "Objet pour l'ensemble de la musique du jeu."
-	author: ""
-	date: "$Date$"
-	revision: "$Revision$"
+	author: "Philippe Guilmette"
+	author: "Étienne Boutet"
+	date: "20170419"
 
 class
 	MUSIQUE
