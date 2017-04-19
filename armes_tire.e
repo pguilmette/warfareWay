@@ -54,9 +54,6 @@ feature -- Accès
 	reload_time:INTEGER = 3
 			-- Le temps à recharger `Current' en secondes.
 
-
-feature {NONE} -- Implémentation
-
 	shoot_weapon
 		require
 			total_ammunition > 0
@@ -66,6 +63,9 @@ feature {NONE} -- Implémentation
 			clip_ammunition := clip_ammunition - 1
 			total_ammunition := total_ammunition - 1
 		end
+
+
+feature {NONE} -- Implémentation
 
 	reload
 		require

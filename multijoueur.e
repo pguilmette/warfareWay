@@ -68,6 +68,7 @@ feature {NONE} -- Implémentation
 					Io.put_string ("Entrer une adresse IP pour se connecter: ")
 					Io.read_line
 					create l_addr_factory
+					-- Marche juste en localhost pour l'instant
 					l_address := l_addr_factory.create_from_name (Io.last_string)
 					if attached l_address as la_address then
 						create l_client_socket.make_client_by_address_and_port (la_address, port)
