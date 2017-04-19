@@ -41,7 +41,6 @@ feature {NONE} -- Implémentation
 		do
 			l_is_valid := false
 			from
-
 			until
 				l_is_valid = true
 			loop
