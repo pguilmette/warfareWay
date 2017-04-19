@@ -25,7 +25,7 @@ feature -- Accès
 	set_total_ammunition (a_total_bullets_left:INTEGER)
 			-- Changer le nombre de balles restantes total de `Current' pour `a_total_bullets_left'.
 		require
-			Positive_amount: a_total_bullets_left >= 0
+			Positive_total_bullets: a_total_bullets_left >= 0
 		do
 			total_ammunition := a_total_bullets_left
 		ensure
@@ -38,7 +38,7 @@ feature -- Accès
 	set_clip_ammunition (a_bullets_left:INTEGER)
 			-- Changer le nombre de balles restantes du chargeur de `Current' pour `a_bullets_left'.
 		require
-			Positive_amount: a_bullets_left >= 0
+			Positive_amount_bullets: a_bullets_left >= 0
 		do
 			clip_ammunition := a_bullets_left
 		ensure
@@ -68,7 +68,7 @@ feature -- Accès
 	reload
 			-- Recharge les balles de `Current'.
 		require
-			total_ammunition > clip_ammunition
+			Has_more_total_bullets: total_ammunition >= clip_ammunition
 		local
 			Second_in_nanoseconds:INTEGER_64
 		do
