@@ -24,6 +24,7 @@
 				<exclude>/.git</exclude>
 				<exclude>/includes</exclude>
 				<exclude>.gitignore</exclude>
+                <exclude>/tests$</exclude>
 			</file_rule>
 			<tests name="tests" location=".\tests"/>
 		</cluster>
