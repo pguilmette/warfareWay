@@ -21,6 +21,7 @@ feature -- Accès
 
 	total_ammunition:INTEGER
 			-- Le nombre de balles du fusil au total.
+		
 
 	set_total_ammunition (a_total_bullets_left:INTEGER)
 			-- Changer le nombre de balles restantes total de `Current' pour `a_total_bullets_left'.
@@ -68,7 +69,7 @@ feature -- Accès
 	reload
 			-- Recharge les balles de `Current'.
 		require
-			Has_more_total_bullets: total_ammunition >= clip_ammunition
+			Total_bullets_higher_than_clip: total_ammunition >= clip_ammunition
 		local
 			Second_in_nanoseconds:INTEGER_64
 		do
