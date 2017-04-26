@@ -78,11 +78,11 @@ feature -- Accès
 		local
 			Second_in_nanoseconds:INTEGER_64
 		do
-			-- manque quelques conditions
-			if clip_ammunition < initial_clip_ammunition then
+			if clip_ammunition < initial_clip_ammunition and
+			total_ammunition >= initial_clip_ammunition then
 				Second_in_nanoseconds := 1000000000
 				reloading := true
-				sleep (reload_time * (Second_in_nanoseconds))
+				sleep (reload_time * Second_in_nanoseconds)
 				reloading := false
 			end
 		end

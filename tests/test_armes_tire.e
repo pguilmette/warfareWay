@@ -197,10 +197,12 @@ feature -- Test routines
 		local
 			before_total_ammunition:INTEGER
 		do
+			test_rifle.set_total_ammunition (60)
+			test_rifle.set_clip_ammunition (8)
 			before_total_ammunition := test_rifle.total_ammunition
 			test_rifle.shoot_weapon
-			test_rifle.reload
-			assert ("test_reload_normal", test_rifle.total_ammunition ~ before_total_ammunition - 1)
+			test_rifle.launch
+			assert ("test_reload_normal", test_rifle.total_ammunition ~ (before_total_ammunition - 1))
 		end
 
 	test_reload_missing_bullets_limite
@@ -214,7 +216,7 @@ feature -- Test routines
 			test_rifle.set_clip_ammunition (4)
 			before_total_ammunition := test_rifle.total_ammunition
 			test_rifle.shoot_weapon
-			test_rifle.reload
+			test_rifle.launch
 			assert ("test_reload_missing_bullets_limite: pas assez de balles", test_rifle.total_ammunition ~ 6)
 		end
 
@@ -227,7 +229,7 @@ feature -- Test routines
 		do
 			test_rifle.set_total_ammunition (33)
 			before_total_ammunition := test_rifle.total_ammunition
-			test_rifle.reload
+			test_rifle.launch
 			assert ("test_reload_full_clip_limite: chargeur plein", test_rifle.total_ammunition ~ 33)
 		end
 
