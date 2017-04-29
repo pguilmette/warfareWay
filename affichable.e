@@ -54,6 +54,7 @@ feature {NONE} -- Implémentation
 			l_pixel_format:GAME_PIXEL_FORMAT
 			l_image_width_divise : REAL_64
 			l_image_height_divise : REAL_64
+			l_texture:GAME_TEXTURE_TARGET
 		do
 			create l_pixel_format
 			l_pixel_format.set_bgra8888
@@ -69,7 +70,12 @@ feature {NONE} -- Implémentation
 			rotation_center_x := l_image_width_divise.rounded
 			rotation_center_y := l_image_height_divise.rounded
 			rotation := 0
-			create image.make (a_renderer, l_pixel_format, a_width, a_height)
+			create l_texture.make (a_renderer, l_pixel_format, a_width, a_height)
+			a_renderer.set_target (l_texture)
+			a_renderer.set_drawing_color (create {GAME_COLOR}.make_rgb (0, 0, 0))
+			a_renderer.clear
+			a_renderer.set_original_target
+			image := l_texture
 		end
 
 feature -- Accès
