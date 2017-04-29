@@ -11,14 +11,13 @@ inherit
 	ARMES_TIRE
 
 create
-	make
+	make_for_ennemy,
+	make_for_player
 
 feature {NONE} -- Initialisation
 
-	make (a_character_type:INTEGER)
+	make_for_ennemy
 			-- Initialisation de `Current'.
-		require
-			Is_positive: a_character_type >= 0 and a_character_type < 2
 		do
 			make_thread
 			bullet_speed := 10
@@ -29,11 +28,30 @@ feature {NONE} -- Initialisation
 			damage := 30
 			rate_of_fire := 0.05
 			reloading := false
-			if a_character_type = 1 then
-				weapon_filename := "includes/images/ennemi_rifle.png"
-			else
-				weapon_filename := "includes/images/personnage_rifle.png"
-			end
+			weapon_filename := "includes/images/ennemi_rifle.png"
+		ensure
+			Is_assign_bullet_speed: bullet_speed = 10
+			Is_assign_total_ammunition: total_ammunition = 60
+			Is_assign_clip_ammunition: clip_ammunition = 30
+			Is_assign_damage: damage = 30
+			Is_assign_rate_of_fire: rate_of_fire = 0.05
+			Is_assign_weapon_filename: weapon_filename.starts_with ("includes/images/")
+			Is_assign_reloading: reloading = false
+		end
+
+	make_for_player
+			-- Initialisation de `Current'.
+		do
+			make_thread
+			bullet_speed := 10
+			initial_total_ammunition := 60
+			total_ammunition := 60
+			initial_clip_ammunition := 30
+			clip_ammunition := 30
+			damage := 30
+			rate_of_fire := 0.05
+			reloading := false
+			weapon_filename := "includes/images/personnage_rifle.png"
 		ensure
 			Is_assign_bullet_speed: bullet_speed = 10
 			Is_assign_total_ammunition: total_ammunition = 60

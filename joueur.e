@@ -21,7 +21,7 @@ feature {NONE} -- Initialisation
 			-- Initialisation de `Current'
 		do
 			make_personnage(a_renderer, "includes/images/personnage_pistol.png")
-			create rifle.make (0)
+			create rifle.make_for_player
 			create pistol.make
 			create knife.make
 			start_x := 0

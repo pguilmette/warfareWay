@@ -22,7 +22,7 @@ feature {NONE} -- Implémentation
 			-- Initialisation de `Current'
 		do
 			make_personnage(a_renderer, "includes/images/ennemi_rifle.png")
-			create rifle.make (1)
+			create rifle.make_for_ennemy
 			start_x := a_x
 			start_y := a_y
 			half_width := width/2

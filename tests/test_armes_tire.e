@@ -22,7 +22,7 @@ feature {NONE} -- Évènements
 	on_prepare
 			-- <Precursor>
 		do
-			create test_rifle.make (0)
+			create test_rifle.make_for_player
 			create test_pistol.make
 		end
 
