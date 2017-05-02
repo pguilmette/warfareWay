@@ -14,7 +14,8 @@ inherit
 		end
 
 create
-	make
+	make,
+	make_with_image_file
 
 feature {NONE} -- Implémentation
 
@@ -27,6 +28,18 @@ feature {NONE} -- Implémentation
 			start_y := a_y
 			half_width := width/2
 			half_height := height/2
+		end
+
+	make_with_image_file(a_x, a_y: INTEGER; a_renderer:GAME_RENDERER; a_image:IMAGE)
+			-- Initialisation de `Current'
+		do
+			make_with_image(a_renderer, a_image)
+			create rifle.make_for_ennemy
+			start_x := a_x
+			start_y := a_y
+			half_width := width/2
+			half_height := height/2
+			image := a_image
 		end
 
 feature -- Accès

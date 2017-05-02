@@ -39,8 +39,8 @@ feature {NONE} -- Initialisation
 			-- Temporairement bloqué pour tester le jeu
 			--create l_menu.make (window, l_font)
 			create cursor
-			create en_ligne.make
-			create {LINKED_LIST[AFFICHABLE]} affichables.make
+			create online.make
+			create {LINKED_LIST[AFFICHABLE]} viewable.make
 			create player.make (window.renderer)
 			player.set_x (30)
 			player.set_y (30)
@@ -51,14 +51,13 @@ feature {NONE} -- Initialisation
 			ennemy.set_x (270)
 			ennemy.set_y (100)
 			create map.make (window.renderer, "includes/images/complete_map.jpg")
-			en_ligne.launch
-			affichables.extend (map)
-			affichables.append (map.walls_array)
-			affichables.append (map.ennemy_array)
-			affichables.append (map.ennemy_array)
-			affichables.extend (player)
-			affichables.extend (player_2)
-			affichables.extend (ennemy)
+			online.launch
+			viewable.extend (map)
+			viewable.append (map.walls_array)
+			viewable.append (map.ennemy_array)
+			viewable.extend (player)
+			viewable.extend (player_2)
+			viewable.extend (ennemy)
 			if l_icon_image.is_openable then
 				l_icon_image.open
 				if l_icon_image.is_open then
@@ -66,7 +65,7 @@ feature {NONE} -- Initialisation
 					l_icon.set_transparent_color (create {GAME_COLOR}.make_rgb (255, 0, 255))
 					window.set_icon (l_icon)
 				else
-					print("Cannot set the window icon.")
+					print("Impossible de mettre une icône de fenêtre.")
 				end
 			end
 		end
@@ -76,7 +75,7 @@ feature -- Accès
 			-- Partir le jeu
 		local
 		do
-			-- Évenements du jeu
+			-- Événements du jeu
 			game_library.quit_signal_actions.extend (agent on_quit)
 			window.key_pressed_actions.extend (agent on_key_pressed)
 			window.key_released_actions.extend (agent on_key_released)
@@ -110,10 +109,10 @@ feature -- Accès
 	cursor:CURSEUR
 			-- Curseur du joueur
 
-	en_ligne:MULTIJOUEUR
+	online:MULTIJOUEUR
 			-- Le module pour jouer en ligne
 
-	affichables:CHAIN[AFFICHABLE]
+	viewable:CHAIN[AFFICHABLE]
 			-- Objets à afficher dans le `window'
 
 feature {NONE} -- Implémentation
@@ -181,10 +180,10 @@ feature {NONE} -- Implémentation
 					la_wall.item.set_y (la_wall.item.y - map.velocity)
 				end
 			end
-			across affichables as la_affichable loop
-				window.renderer.draw_sub_texture_with_rotation (la_affichable.item.image, la_affichable.item.start_x, la_affichable.item.start_y,
-					la_affichable.item.width, la_affichable.item.height, la_affichable.item.x, la_affichable.item.y, la_affichable.item.rotation_center_x,
-					la_affichable.item.rotation_center_y, la_affichable.item.rotation)
+			across viewable as la_viewable loop
+				window.renderer.draw_sub_texture_with_rotation (la_viewable.item.image, la_viewable.item.start_x, la_viewable.item.start_y,
+					la_viewable.item.width, la_viewable.item.height, la_viewable.item.x, la_viewable.item.y, la_viewable.item.rotation_center_x,
+					la_viewable.item.rotation_center_y, la_viewable.item.rotation)
 			end
 			window.renderer.present
 			audio_library.update

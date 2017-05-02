@@ -24,6 +24,7 @@ feature {NONE} -- Initialisation
 			set_velocity (5)
 			create walls_array.make (Walls_amount)
 			create ennemy_array.make (Ennemy_amount)
+			create ennemy_factory.make (a_renderer)
 			walls_creation (a_renderer)
 			ennemy_creation (a_renderer)
 			make_map (a_renderer, "includes/images/complete_map.jpg")
@@ -51,6 +52,9 @@ feature -- Accès
 
 	velocity:INTEGER
 			-- La vitesse que le fond de `Current' se déplace.
+
+	ennemy_factory:ENNEMI_FACTORY
+			-- Fabrique pour les {ENNEMI}.
 
 	set_velocity (a_velocity:INTEGER)
 			-- Changer la vitesse du fond de `Current' pour `a_velocity'.
@@ -115,12 +119,12 @@ feature {NONE} -- Implémentation
 		require
 			ennemy_array.capacity = Ennemy_amount
 		do
-			ennemy_array.extend (create {ENNEMI}.make (670,30, a_renderer))
-			ennemy_array.extend (create {ENNEMI}.make (100,100, a_renderer))
-			ennemy_array.extend (create {ENNEMI}.make (100,100, a_renderer))
-			ennemy_array.extend (create {ENNEMI}.make (100,100, a_renderer))
-			ennemy_array.extend (create {ENNEMI}.make (100,100, a_renderer))
-			ennemy_array.extend (create {ENNEMI}.make (100,100, a_renderer))
+			ennemy_array.extend (ennemy_factory.generate_ennemy (670,30, a_renderer))
+			ennemy_array.extend (ennemy_factory.generate_ennemy (100,100, a_renderer))
+			ennemy_array.extend (ennemy_factory.generate_ennemy (100,100, a_renderer))
+			ennemy_array.extend (ennemy_factory.generate_ennemy (100,100, a_renderer))
+			ennemy_array.extend (ennemy_factory.generate_ennemy (100,100, a_renderer))
+			ennemy_array.extend (ennemy_factory.generate_ennemy (100,100, a_renderer))
 		ensure
 			Is_all_assign: ennemy_array.count = Ennemy_amount
 		end

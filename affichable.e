@@ -78,6 +78,28 @@ feature {NONE} -- Implémentation
 			image := l_texture
 		end
 
+	make_with_image (a_renderer:GAME_RENDERER; a_image:IMAGE)
+			-- Initialise `Current'
+		local
+			l_pixel_format:GAME_PIXEL_FORMAT
+			l_image_width_divise : REAL_64
+			l_image_height_divise : REAL_64
+		do
+			create l_pixel_format
+			l_pixel_format.set_bgra8888
+			x := 0
+			y := 0
+			start_x := 0
+			start_y := 0
+			width := a_image.width
+			height := a_image.height
+			l_image_width_divise := width/2
+			l_image_height_divise := width/2
+			rotation_center_x := l_image_width_divise.rounded
+			rotation_center_y := l_image_height_divise.rounded
+			rotation := 0
+		end
+
 feature -- Accès
 
 	has_error:BOOLEAN

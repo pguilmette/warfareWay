@@ -23,7 +23,10 @@ feature {NONE} -- Initialisation
 			-- Initialisation de `Current'
 		local
 			l_image: IMG_IMAGE_FILE
+			l_pixel_format:GAME_PIXEL_FORMAT
 		do
+			create l_pixel_format
+			l_pixel_format.set_bgra8888
 			create l_image.make (a_filename)
 			if l_image.is_openable then
 				l_image.open
@@ -32,6 +35,8 @@ feature {NONE} -- Initialisation
 				end
 			end
 		end
+
+invariant
 
 note
 	copyright: "Tous droits réservés (c) 2017, Étienne Boutet et Philippe Guilmette"
