@@ -18,6 +18,7 @@ feature {NONE} -- Initialisation
 			audio_library.enable_sound
 			audio_library.sources_add
 			source := audio_library.last_source_added
+			source.gain := 0.1
 			create sound.make(a_namefile)
 			sound.open
 		end

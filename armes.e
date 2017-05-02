@@ -7,6 +7,9 @@ note
 deferred class
 	ARMES
 
+inherit
+	SON
+
 feature -- Accès
 
 	damage:INTEGER

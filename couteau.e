@@ -19,6 +19,7 @@ feature {NONE} -- Initialisation
 	make
 			-- Initialisation de `Current'.
 		do
+			make_knife_sound
 			damage := 100
 			weapon_filename := "includes/images/personnage_knife.png"
 		ensure

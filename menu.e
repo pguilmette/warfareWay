@@ -20,7 +20,6 @@ feature {NONE} -- Initialization
 			window := a_window
 			window.renderer.set_drawing_color (create {GAME_COLOR}.make_rgb (128, 128, 128))
 			window.renderer.draw_filled_rectangle (0, 0, a_window.width, a_window.height)
-			--window.key_pressed_actions.extend (agent on_key_pressed)
 			create how_to_play_image.make (window.renderer, "includes/images/how_to_play_img.jpg")
 			create l_asset_top.make (window.renderer, "includes/images/asset_top.png")
 			create l_asset_mid.make (window.renderer, "includes/images/asset_middle.png")

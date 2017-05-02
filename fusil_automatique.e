@@ -20,6 +20,8 @@ feature {NONE} -- Initialisation
 			-- Initialisation de `Current'.
 		do
 			make_thread
+			make_rifle_sound
+			make_reload_sound
 			bullet_speed := 10
 			initial_total_ammunition := 60
 			total_ammunition := 60
@@ -43,6 +45,8 @@ feature {NONE} -- Initialisation
 			-- Initialisation de `Current'.
 		do
 			make_thread
+			make_rifle_sound
+			make_reload_sound
 			bullet_speed := 10
 			initial_total_ammunition := 60
 			total_ammunition := 60

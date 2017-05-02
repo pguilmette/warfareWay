@@ -7,6 +7,25 @@ note
 class
 	MENU_CREDIT
 
+inherit
+	MENU
+		redefine
+			make
+		end
+
+create
+	make
+
+feature {NONE} -- Initialisation
+
+	make
+			-- Initialise `Current'.
+		do
+			Precursor (a_window, a_font)
+			create sections.make_from_array (<<"Philippe Guilmette", "Étienne Boutet">>)
+			show_sections (sections)
+		end
+
 note
 	copyright: "Tous droits réservés (c) 2017, Étienne Boutet et Philippe Guilmette"
 	license:   "GNU General Public License v3.0"

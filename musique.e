@@ -18,7 +18,7 @@ create
 
 feature {NONE} -- Initialisation
 	make
-		-- Initialise `Current'
+			-- Initialise `Current'
 		do
 			make_audible("includes/audio/htmiami.wav")
 		end
