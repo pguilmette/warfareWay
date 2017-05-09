@@ -20,10 +20,16 @@ feature {NONE} -- Initialisation
 	make(a_renderer:GAME_RENDERER)
 			-- Initialisation de `Current'
 		do
-			make_personnage(a_renderer, "includes/images/personnage_pistol.png")
-			create rifle.make_for_player
-			create pistol.make
-			create knife.make
+			initialise(a_renderer, "includes/images/personnage_pistol.png")
+		end
+
+	initialise(a_renderer:GAME_RENDERER; image_link:STRING)
+			-- Initialisation de `Current'
+		do
+			make_personnage(a_renderer, image_link)
+--			create rifle.make_for_player
+--			create pistol.make
+--			create knife.make
 			start_x := 0
 			start_y := 0
 			half_width := width/2
@@ -32,14 +38,14 @@ feature {NONE} -- Initialisation
 
 feature -- Accès
 
-	rifle:FUSIL_AUTOMATIQUE
-			-- Le {FUSIL_AUTOMATIQUE} de `Current'.
+--	rifle:FUSIL_AUTOMATIQUE
+--			-- Le {FUSIL_AUTOMATIQUE} de `Current'.
 
-	pistol:PISTOLET
-			-- Le {PISTOLET} de `Current'.
+--	pistol:PISTOLET
+--			-- Le {PISTOLET} de `Current'.
 
-	knife:COUTEAU
-			-- Le {COUTEAU} de `Current'.
+--	knife:COUTEAU
+--			-- Le {COUTEAU} de `Current'.
 
 invariant
 

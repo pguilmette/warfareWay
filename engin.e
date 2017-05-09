@@ -138,7 +138,7 @@ feature {NONE} -- Implémentation
 					player.go_down (a_timestamp)
 				end
 				if a_key_state.is_r then
-					player.rifle.launch
+--					player.rifle.launch
 				end
 			end
 		end
