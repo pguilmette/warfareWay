@@ -18,11 +18,11 @@ create
 
 feature {NONE} -- Initialisation
 
-	make
+	make(a_window : GAME_WINDOW_RENDERED; a_font:TEXT_FONT)
 			-- Initialise `Current'.
 		do
 			Precursor (a_window, a_font)
-			create sections.make_from_array (<<"Philippe Guilmette", "Étienne Boutet">>)
+			create sections.make_from_array ("Philippe Guilmette", "Étienne Boutet")
 			show_sections (sections)
 		end
 

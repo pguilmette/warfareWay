@@ -1,11 +1,11 @@
 note
-	description: "Summary description for {JOUER_CLIENT}."
+	description: "Summary description for {JOUEUR_CLIENT}."
 	author: ""
 	date: "$Date$"
 	revision: "$Revision$"
 
 class
-	JOUER_CLIENT
+	JOUEUR_CLIENT
 
 inherit
 	JOUEUR
@@ -20,9 +20,7 @@ feature {NONE} -- Initialisation
 	make(a_renderer:GAME_RENDERER)
 			-- Initialisation de `Current'
 		do
-			initialise(a_renderer, "includes/images/ennemi_rifle.png")
-			start_x := 50
-			start_y := 50
+			initialise(a_renderer, "includes/images/personnage_pistol.png")
 		end
 
 end
