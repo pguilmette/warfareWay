@@ -16,12 +16,13 @@ create
 
 feature {NONE} -- Initialisation
 
-	make_for_ennemy
+	make_for_ennemy (a_renderer:GAME_RENDERER)
 			-- Initialisation de `Current'.
 		do
 			make_thread
 			make_rifle_sound
 			make_reload_sound
+			make_projectile
 			bullet_speed := 10
 			initial_total_ammunition := 60
 			total_ammunition := 60
@@ -47,6 +48,7 @@ feature {NONE} -- Initialisation
 			make_thread
 			make_rifle_sound
 			make_reload_sound
+			make_projectile
 			bullet_speed := 10
 			initial_total_ammunition := 60
 			total_ammunition := 60

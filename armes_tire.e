@@ -13,6 +13,10 @@ inherit
 			make as make_thread
 		end
 	ARMES
+	PROJECTILE
+		rename
+			make as make_projectile
+		end
 
 feature -- Accès
 
@@ -21,9 +25,6 @@ feature -- Accès
 
 	initial_clip_ammunition:INTEGER
 			-- Le nombre de balles de `Current' d'un chargeur lorsqu'il est plein.
-
-	bullet_speed:INTEGER
-			-- La vitesse de la balle du fusil
 
 	total_ammunition:INTEGER
 			-- Le nombre de balles du fusil au total.
@@ -82,7 +83,7 @@ feature -- Accès
 			total_ammunition >= initial_clip_ammunition then
 				Second_in_nanoseconds := 1000000000
 				reloading := true
-				sleep (reload_time * Second_in_nanoseconds)
+				--sleep (reload_time * Second_in_nanoseconds)
 				reloading := false
 			end
 		end

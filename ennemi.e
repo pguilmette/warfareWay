@@ -23,7 +23,7 @@ feature {NONE} -- Implémentation
 			-- Initialisation de `Current'
 		do
 			make_personnage(a_renderer, "includes/images/ennemi_rifle.png")
-			create rifle.make_for_ennemy
+			create rifle.make_for_ennemy (a_renderer)
 			start_x := a_x
 			start_y := a_y
 			half_width := width/2
@@ -34,7 +34,7 @@ feature {NONE} -- Implémentation
 			-- Initialisation de `Current'
 		do
 			make_with_image(a_renderer, a_image)
-			create rifle.make_for_ennemy
+			create rifle.make_for_ennemy (a_renderer)
 			start_x := a_x
 			start_y := a_y
 			half_width := width/2
