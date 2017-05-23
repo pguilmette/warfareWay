@@ -33,8 +33,8 @@ feature -- Accès
 	Walls_amount:INTEGER = 13
 			-- Le nombre de {MUR} de `Current'.
 
-	walls_array:ARRAYED_LIST[AFFICHABLE]
-			-- La liste de tous les murs de `Current'.
+	walls_array:ARRAYED_LIST[MUR]
+			-- La liste de tous les {MUR} de `Current'.
 
 	total_height:INTEGER = 1200
 			-- La hauteur de la `Current' complète.

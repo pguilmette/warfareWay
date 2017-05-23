@@ -44,8 +44,8 @@ feature {NONE} -- Initialisation
 			player.set_x (30)
 			player.set_y (30)
 			create ennemy.make (window.renderer)
-			ennemy.set_x (670)
-			ennemy.set_y (30)
+			ennemy.set_x (270)
+			ennemy.set_y (100)
 			create map.make (window.renderer, "includes/images/complete_map.jpg")
 			affichables.extend (map)
 			affichables.append (map.walls_array)
@@ -102,6 +102,7 @@ feature -- Accès
 	affichables:CHAIN[AFFICHABLE]
 			-- Objets à afficher dans le `window'
 
+
 feature {NONE} -- Implémentation
 
 	on_key_pressed(a_timestamp: NATURAL_32; a_key_state: GAME_KEY_STATE)
@@ -145,11 +146,40 @@ feature {NONE} -- Implémentation
 
 	on_iteration(a_timestamp: NATURAL_32)
 			-- Événement qui s'exécute à chaque iteration
+		local
+			l_position_x, l_position_y : INTEGER_32
 		do
+			l_position_x := player.x
+			l_position_y := player.y
+
 			window.renderer.clear
 			ennemy.update (a_timestamp)
 			player.update (a_timestamp)
 			player.calculate_angle (cursor)
+			ennemy.calculate_angle (player)
+					if player.going_right then
+						do_nothing
+					end
+			across map.walls_array as la_walls loop
+				if player.valide_collision (la_walls.item)then
+					if player.going_down then
+						player.stop_down
+					end
+					if player.going_left then
+						player.stop_left
+					end
+					if player.going_right then
+						player.stop_right
+					end
+					if player.going_up then
+						player.stop_up
+					end
+					player.x := l_position_x
+					player.y := l_position_y
+				end
+			end
+
+
 			across map.walls_array as la_wall loop
 				if player.going_right AND player.x <= 1200 AND player.y > 0 then
 					la_wall.item.set_x (la_wall.item.x - player.speed)
