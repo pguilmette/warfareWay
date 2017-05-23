@@ -9,11 +9,11 @@ class
 
 feature {NONE} -- Implémentation
 
-	on_left_click_pressed (a_timestamp: )
-			-- Lorsque l'utilisateur clique sur la souris de gauche.
-		do
+--	on_left_click_pressed (a_timestamp: )
+--			-- Lorsque l'utilisateur clique sur la souris de gauche.
+--		do
 
-		end
+--		end
 
 note
 	copyright: "Tous droits réservés (c) 2017, Étienne Boutet et Philippe Guilmette"

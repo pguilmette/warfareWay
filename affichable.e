@@ -129,10 +129,10 @@ feature -- Accès
 	rotation_center_y:INTEGER
 			-- Centre de rotation en y de l'objet
 
-	x:INTEGER
+	x:INTEGER assign set_x
 		-- Position en x de l'objet
 
-	y:INTEGER
+	y:INTEGER assign set_y
 		-- Position en y de l'objet
 
 	set_y(a_y:INTEGER)

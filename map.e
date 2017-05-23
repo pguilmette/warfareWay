@@ -38,8 +38,8 @@ feature -- Accès
 	Ennemy_amount:INTEGER = 6
 			-- Le nombre d'{ENNEMI} de `Current'.
 
-	walls_array:ARRAYED_LIST[AFFICHABLE]
-			-- La liste de tous les murs de `Current'.
+	walls_array:ARRAYED_LIST[MUR]
+			-- La liste de tous les {MUR} de `Current'.
 
 	ennemy_array:ARRAYED_LIST[AFFICHABLE]
 			-- La liste de tous les ennemis de `Current'.

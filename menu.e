@@ -9,7 +9,7 @@ deferred class
 
 feature {NONE} -- Initialization
 
-	make(a_window : GAME_WINDOW_RENDERED; a_font:TEXT_FONT)
+	make(a_window : GAME_RENDERER; a_font:TEXT_FONT)
 			-- Initialisation de `Current'
 		local
 			l_text_title:TEXT_SURFACE_BLENDED

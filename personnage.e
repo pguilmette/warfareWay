@@ -2,15 +2,39 @@ note
 	description: "Objet pour un personnage du jeu."
 	author: "Philippe Guilmette"
 	author: "Étienne Boutet"
-	date: "20170220"
+	date: "20160220"
 
 deferred class
 	PERSONNAGE
 
 inherit
 	AFFICHABLE
+		redefine
+			make
+		end
+	COLLISABLE
+		rename
+			width as width_collision,
+			height as height_collision
+		end
+
+feature {NONE} -- Implémentation
+
+	make(a_renderer:GAME_RENDERER; a_namefile:STRING)
+		-- <Precursor>
+		do
+			Precursor(a_renderer, a_namefile)
+			width_collision := width.min (height)
+			height_collision := width_collision
+		end
 
 feature -- Accès
+
+	width_collision : INTEGER_32
+		-- <Precursor>
+
+	height_collision : INTEGER_32
+		-- <Precursor>
 
 	update(a_timestamp:NATURAL_32)
 			-- Met à jour la surface de `a_timestamp'
@@ -132,9 +156,6 @@ feature -- Accès
 	speed:INTEGER = 3
 			-- La vitesse du personnage
 
-	active_weapon:INTEGER
-			-- L'{ARMES} présentement utilisé par `Current'.
-
 feature {NONE} -- Implémentation
 
 	atan2 (distance_x, distance_y: REAL_64): REAL_64
@@ -146,9 +167,7 @@ feature {NONE} -- Implémentation
 	    end
 
 invariant
-	Is_half_width_positive: half_width >= 2
-	Is_half_height_positive: half_height >= 2
-	Is_speed_positive: speed > 0
+	Is_positive: speed > 0
 	Is_not_opposite_y: not (going_up AND going_down)
 	Is_not_opposite_x: not (going_left AND going_right)
 

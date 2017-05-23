@@ -161,23 +161,48 @@ feature {NONE} -- Implémentation
 
 	on_iteration(a_timestamp: NATURAL_32)
 			-- Événement qui s'exécute à chaque iteration
+		local
+			l_position_x : INTEGER_32
+			l_position_y : INTEGER_32
 		do
+			l_position_x := player.x
+			l_position_y := player.y
 			window.renderer.clear
 			player.update (a_timestamp)
 			player.calculate_angle (cursor)
 			ennemy.calculate_angle (player)
+			across map.walls_array as la_walls loop
+				if player.valide_collision (la_walls.item)then
+					if player.going_down then
+						player.stop_down
+					end
+					if player.going_left then
+						player.stop_left
+					end
+					if player.going_right then
+						player.stop_right
+					end
+					if player.going_up then
+						player.stop_up
+					end
+					player.x := l_position_x
+					player.y := l_position_y
+				end
+			end
+
+
 			across map.walls_array as la_wall loop
-				if player.going_right then
-					la_wall.item.set_x (la_wall.item.x - map.velocity)
+				if player.going_right AND player.x <= 1200 AND player.y > 0 then
+					la_wall.item.set_x (la_wall.item.x - player.speed)
 				end
-				if player.going_left then
-					la_wall.item.set_x (la_wall.item.x + map.velocity)
+				if player.going_left AND player.x > 0 AND player.y > 0 then
+					la_wall.item.set_x (la_wall.item.x + player.speed)
 				end
-				if player.going_up then
-					la_wall.item.set_y (la_wall.item.y + map.velocity)
+				if player.going_up AND player.x > 0 AND player.y > 0  then
+					la_wall.item.set_y (la_wall.item.y + player.speed)
 				end
-				if player.going_down then
-					la_wall.item.set_y (la_wall.item.y - map.velocity)
+				if player.going_down AND player.x < 1600 AND player.y < 1200  then
+					la_wall.item.set_y (la_wall.item.y - player.speed)
 				end
 			end
 			across viewable as la_viewable loop

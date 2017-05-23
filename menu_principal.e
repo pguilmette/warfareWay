@@ -18,7 +18,7 @@ create
 
 feature {NONE} -- Initialisation
 
-	make(a_window: GAME_WINDOW_RENDERED; a_font:TEXT_FONT)
+	make(a_window: GAME_RENDERER; a_font:TEXT_FONT)
 			-- <Precursor>
 		do
 			Precursor (a_window, a_font)
