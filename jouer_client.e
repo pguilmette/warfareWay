@@ -1,8 +1,8 @@
 note
-	description: "Summary description for {JOUER_CLIENT}."
-	author: ""
-	date: "$Date$"
-	revision: "$Revision$"
+	description: "Objet pour un joueur (côté client)."
+	author: "Étienne Boutet"
+	author: "Philippe Guilmette"
+	date: "20170423"
 
 class
 	JOUER_CLIENT
@@ -24,5 +24,14 @@ feature {NONE} -- Initialisation
 			start_x := 50
 			start_y := 50
 		end
+
+invariant
+
+note
+	copyright: "Tous droits réservés (c) 2017, Étienne Boutet et Philippe Guilmette"
+	license:   "GNU General Public License v3.0"
+	source: "[
+			Cégep de Drummondville
+		]"
 
 end

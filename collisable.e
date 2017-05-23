@@ -1,5 +1,5 @@
 note
-	description: "Summary description for {COLLISABLE}."
+	description: "Objet pour les collisions du jeu."
 	author: "Étienne Boutet"
 	author: "Philippe Guilmette"
 	date: "20170523"
