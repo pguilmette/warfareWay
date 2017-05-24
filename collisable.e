@@ -33,46 +33,37 @@ feature -- Accès
 			l_collision : BOOLEAN
 		do
 			Result :=
+					valide_collision_from_collisables(current, a_objet_collision)
+				or
+					valide_collision_from_collisables(a_objet_collision, current)
+		end
+
+feature {NONE} -- Initialisation
+
+	valide_collision_from_collisables(a_collisable_1, a_collisable_2:COLLISABLE) : BOOLEAN
+			-- Permet de vérifier s'il y a une collision entre deux objets de type collisable.
+		do
+			Result :=
 				(
-					x >= a_objet_collision.x and
-				  	x <= a_objet_collision.x + a_objet_collision.width and
-				  	y >= a_objet_collision.y and
-				  	y <= a_objet_collision.y + a_objet_collision.height
+					a_collisable_1.x >= a_collisable_2.x and
+				  	a_collisable_1.x <= a_collisable_2.x + a_collisable_2.width and
+				  	a_collisable_1.y >= a_collisable_2.y and
+				  	a_collisable_1.y <= a_collisable_2.y + a_collisable_2.height
 				) or (
-			  		x + width >= a_objet_collision.x and
-				  	x + width <= a_objet_collision.x + a_objet_collision.width and
-				  	y >= a_objet_collision.y and
-				  	y <= a_objet_collision.y + a_objet_collision.height
+			  		a_collisable_1.x + a_collisable_1.width >= a_collisable_2.x and
+				  	a_collisable_1.x + a_collisable_1.width <= a_collisable_2.x + a_collisable_2.width and
+				  	a_collisable_1.y >= a_collisable_2.y and
+				  	a_collisable_1.y <= a_collisable_2.y + a_collisable_2.height
 				) or (
-			  		x >= a_objet_collision.x and
-				  	x <= a_objet_collision.x + a_objet_collision.width and
-				  	y + height >= a_objet_collision.y and
-				  	y + height <= a_objet_collision.y + a_objet_collision.height
+			  		a_collisable_1.x >= a_collisable_2.x and
+				  	a_collisable_1.x <= a_collisable_2.x + a_collisable_2.width and
+				  	a_collisable_1.y + a_collisable_1.height >= a_collisable_2.y and
+				  	a_collisable_1.y + a_collisable_1.height <= a_collisable_2.y + a_collisable_2.height
 				) or (
-				  	x + width >= a_objet_collision.x and
-				  	x + width <= a_objet_collision.x + a_objet_collision.width and
-				  	y + height >= a_objet_collision.y and
-				  	y + height <= a_objet_collision.y + a_objet_collision.height
-				) or (
-					a_objet_collision.x >= x and
-					a_objet_collision.x <= x + width and
-					a_objet_collision.y >= y and
-					a_objet_collision.y <= y + height
-				) or (
-					a_objet_collision.x + a_objet_collision.width >= x and
-					a_objet_collision.x + a_objet_collision.width <= x + width and
-					a_objet_collision.y >= y and
-					a_objet_collision.y <= y + height
-				) or (
-					a_objet_collision.x >= x and
-					a_objet_collision.x <= x + width and
-					a_objet_collision.y + a_objet_collision.height>= y and
-					a_objet_collision.y + a_objet_collision.height <= y + height
-				) or (
-					a_objet_collision.x + a_objet_collision.width >= x and
-					a_objet_collision.x + a_objet_collision.width <= x + width and
-					a_objet_collision.y + a_objet_collision.height >= y and
-					a_objet_collision.y + a_objet_collision.height <= y + height
+				  	a_collisable_1.x + a_collisable_1.width >= a_collisable_2.x and
+				  	a_collisable_1.x + a_collisable_1.width <= a_collisable_2.x + a_collisable_2.width and
+				  	a_collisable_1.y + a_collisable_1.height >= a_collisable_2.y and
+				  	a_collisable_1.y + a_collisable_1.height <= a_collisable_2.y + a_collisable_2.height
 				)
 		end
 
