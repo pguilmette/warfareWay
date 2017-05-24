@@ -16,6 +16,7 @@ inherit
 		rename
 			make as make_obstacle
 		end
+	COLLISABLE
 
 create
 	make

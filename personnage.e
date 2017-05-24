@@ -9,8 +9,32 @@ deferred class
 
 inherit
 	AFFICHABLE
+		redefine
+			make
+		end
+	COLLISABLE
+		rename
+			width as width_collision,
+			height as height_collision
+		end
+
+feature {NONE} -- Implémentation
+
+	make(a_renderer:GAME_RENDERER; a_namefile:STRING)
+		-- <Precursor>
+		do
+			Precursor(a_renderer, a_namefile)
+			width_collision := width.min (height)
+			height_collision := width_collision
+		end
 
 feature -- Accès
+
+	width_collision : INTEGER_32
+		-- <Precursor>
+
+	height_collision : INTEGER_32
+		-- <Precursor>
 
 	update(a_timestamp:NATURAL_32)
 			-- Met à jour la surface de `a_timestamp'
@@ -99,7 +123,23 @@ feature -- Accès
 			going_down := False
 		end
 
+	calculate_angle(a_position:POSITION)
+			-- Permet de calculer l'angle entre le joueur et le curseur
+		local
+			l_x_distance, l_y_distance, l_angle, l_angle_degree: REAL_64
+		do
+			l_x_distance := a_position.center_x - (x + half_width)
+			l_y_distance := a_position.center_y - (y + half_height)
+			l_angle := atan2 (l_x_distance, l_y_distance)
+			l_angle_degree := -(l_angle * (180/3.1416))
+			rotation := l_angle_degree
+		end
 
+	half_width:REAL_64
+			-- Moitié de la largeur de l'image
+
+	half_height:REAL_64
+			-- Moitié de la hauteur de l'image
 
 	going_left:BOOLEAN
 			-- Si `Current' va vers la gauche
@@ -115,6 +155,16 @@ feature -- Accès
 
 	speed:INTEGER = 3
 			-- La vitesse du personnage
+
+feature {NONE} -- Implémentation
+
+	atan2 (distance_x, distance_y: REAL_64): REAL_64
+			-- Pour calculer l'angle du personnage
+	    external
+	        "C signature (double, double): double use <math.h>"
+	    alias
+	        "atan2"
+	    end
 
 invariant
 	Is_positive: speed > 0
