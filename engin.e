@@ -139,6 +139,7 @@ feature {NONE} -- Implémentation
 				end
 				if a_key_state.is_r then
 --					player.rifle.launch
+					player.rifle.play_sound
 				end
 			end
 		end

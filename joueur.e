@@ -27,7 +27,7 @@ feature {NONE} -- Initialisation
 			-- Initialisation de `Current'
 		do
 			make_personnage(a_renderer, image_link)
---			create rifle.make_for_player
+			create rifle.make_for_player
 --			create pistol.make
 --			create knife.make
 			start_x := 0
@@ -38,8 +38,8 @@ feature {NONE} -- Initialisation
 
 feature -- Accès
 
---	rifle:FUSIL_AUTOMATIQUE
---			-- Le {FUSIL_AUTOMATIQUE} de `Current'.
+	rifle:FUSIL_AUTOMATIQUE
+			-- Le {FUSIL_AUTOMATIQUE} de `Current'.
 
 --	pistol:PISTOLET
 --			-- Le {PISTOLET} de `Current'.

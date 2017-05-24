@@ -47,7 +47,6 @@ feature {NONE} -- Initialisation
 		do
 			make_thread
 			make_rifle_sound
-			make_reload_sound
 			make_projectile
 			bullet_speed := 10
 			initial_total_ammunition := 60

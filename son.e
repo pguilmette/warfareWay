@@ -24,25 +24,25 @@ feature {NONE} -- Initialisation
 	make_rifle_sound
 			-- Initialise `Current'.
 		do
-			make_audible ("include/audio/RIFLE_SHOT.WAV")
+			make_audible ("includes/audio/RIFLE_SHOT.wav")
 		end
 
 	make_knife_sound
 			-- Initialise `Current'.
 		do
-			make_audible ("include/audio/KNIFE_SLASH.WAV")
+			make_audible ("includes/audio/KNIFE_SLASH.wav")
 		end
 
 	make_pistol_sound
 			-- Initialise `Current'.
 		do
-			make_audible ("include/audio/PISTOL_SHOT.WAV")
+			make_audible ("includes/audio/PISTOL_SHOT.wav")
 		end
 
 	make_reload_sound
 			-- Initialise `Current'.
 		do
-			make_audible ("include/audio/RELOAD.WAV")
+			make_audible ("includes/audio/RELOAD.wav")
 		end
 
 note

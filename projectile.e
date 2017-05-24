@@ -30,8 +30,15 @@ feature {NONE} -- Implémentation
 
 	bullet_movement (a_angle:REAL_64)
 			-- Le déplacement de `Current' lorsque le {PERSONNAGE} tire.
+		local
+			l_vitesse_projectile:REAL_64
 		do
-			
+			l_vitesse_projectile := 1
+			if (a_angle.rounded\\90 /= 0) then
+
+			else
+				l_vitesse_projectile := a_angle
+			end
 		end
 
 invariant
