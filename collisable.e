@@ -53,6 +53,26 @@ feature -- Accès
 				  	x + width <= a_objet_collision.x + a_objet_collision.width and
 				  	y + height >= a_objet_collision.y and
 				  	y + height <= a_objet_collision.y + a_objet_collision.height
+				) or (
+					a_objet_collision.x >= x and
+					a_objet_collision.x <= x + width and
+					a_objet_collision.y >= y and
+					a_objet_collision.y <= y + height
+				) or (
+					a_objet_collision.x + a_objet_collision.width >= x and
+					a_objet_collision.x + a_objet_collision.width <= x + width and
+					a_objet_collision.y >= y and
+					a_objet_collision.y <= y + height
+				) or (
+					a_objet_collision.x >= x and
+					a_objet_collision.x <= x + width and
+					a_objet_collision.y + a_objet_collision.height>= y and
+					a_objet_collision.y + a_objet_collision.height <= y + height
+				) or (
+					a_objet_collision.x + a_objet_collision.width >= x and
+					a_objet_collision.x + a_objet_collision.width <= x + width and
+					a_objet_collision.y + a_objet_collision.height >= y and
+					a_objet_collision.y + a_objet_collision.height <= y + height
 				)
 		end
 
