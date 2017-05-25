@@ -21,7 +21,7 @@ feature {NONE} -- Initialisation
 	make (a_renderer:GAME_RENDERER; a_font:TEXT_FONT)
 			-- Initialise `Current'.
 		do
-			Precursor (a_window, a_font)
+			Precursor (a_renderer, a_font)
 			create sections.make_from_array (<<"Philippe Guilmette", "Étienne Boutet">>)
 			show_sections (sections)
 		end

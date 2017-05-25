@@ -70,9 +70,7 @@ feature {NONE} -- Initialisation
 feature -- Accès
 	start_game
 			-- Partir le jeu
-		local
 		do
-			-- Événements du jeu
 			game_library.quit_signal_actions.extend (agent on_quit)
 			window.key_pressed_actions.extend (agent on_key_pressed)
 			window.key_released_actions.extend (agent on_key_released)

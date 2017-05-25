@@ -5,7 +5,7 @@ note
 	date: "20170423"
 
 class
-	JOUER_CLIENT
+	JOUEUR_CLIENT
 
 inherit
 	JOUEUR
@@ -13,10 +13,13 @@ inherit
 			make
 		end
 
+	JOUEUR
+
 create
 	make
 
 feature {NONE} -- Initialisation
+
 	make(a_renderer:GAME_RENDERER)
 			-- Initialisation de `Current'
 		do

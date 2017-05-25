@@ -29,8 +29,6 @@ feature -- Accès
 	valide_collision(a_objet_collision : COLLISABLE) : BOOLEAN
 			-- Permet de valider si il y a une collision entre 2 objets
 			-- Retourne vrai ou faux
-		local
-			l_collision : BOOLEAN
 		do
 			Result :=
 					valide_collision_from_collisables(current, a_objet_collision)

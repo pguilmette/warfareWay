@@ -8,7 +8,6 @@ class
 	COUTEAU
 
 inherit
-	ANIMATION
 	ARMES
 
 create

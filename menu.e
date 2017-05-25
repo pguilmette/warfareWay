@@ -17,20 +17,16 @@ feature {NONE} -- Initialization
 			l_asset_mid:IMAGE
 			l_asset_bottom:IMAGE
 		do
-			window := a_window
-			window.renderer.set_drawing_color (create {GAME_COLOR}.make_rgb (128, 128, 128))
-			window.renderer.draw_filled_rectangle (0, 0, a_window.width, a_window.height)
-			create how_to_play_image.make (window.renderer, "includes/images/how_to_play_img.jpg")
-			create l_asset_top.make (window.renderer, "includes/images/asset_top.png")
-			create l_asset_mid.make (window.renderer, "includes/images/asset_middle.png")
-			create l_asset_bottom.make (window.renderer, "includes/images/asset_bottom.png")
-			window.renderer.draw_texture (l_asset_top, 500, 5)
-			window.renderer.draw_texture (l_asset_mid, 500, 190)
-			window.renderer.draw_texture (l_asset_bottom, 500, 390)
+			a_window.set_drawing_color (create {GAME_COLOR}.make_rgb (128, 128, 128))
+			a_window.draw_filled_rectangle (0, 0, 800, 600)
+			create how_to_play_image.make (a_window, "includes/images/how_to_play_img.jpg")
+			create l_asset_top.make (a_window, "includes/images/asset_top.png")
+			create l_asset_mid.make (a_window, "includes/images/asset_middle.png")
+			create l_asset_bottom.make (a_window, "includes/images/asset_bottom.png")
+			a_window.draw_texture (l_asset_top, 500, 5)
+			a_window.draw_texture (l_asset_mid, 500, 190)
+			a_window.draw_texture (l_asset_bottom, 500, 390)
 			create l_text_title.make ("Warfare Way", a_font, create {GAME_COLOR}.make_rgb (0, 0, 128))
-			if not l_text_title.has_error then
-				--window.surface.draw_texture (l_text_title, 20, 20)
-			end
 		end
 
 feature -- Accès
@@ -40,9 +36,6 @@ feature -- Accès
 
 	how_to_play_image:IMAGE
 			-- Image qui explique comment jouer
-
-	window:GAME_WINDOW_RENDERED
-			-- La fenêtre principale du jeu
 
 	sections:ARRAYED_LIST[STRING]
 			-- La liste des sections du menu
@@ -54,7 +47,7 @@ feature {NONE} -- Implémentation
 		do
 			if not a_key_state.is_repeat then
 				if a_key_state.is_tab then
-					window.renderer.draw_texture (how_to_play_image, 100, 75)
+					-- à faire
 				end
 			end
 		end
