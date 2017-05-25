@@ -25,7 +25,6 @@ feature {NONE} -- Initialisation
 			l_icon:GAME_SURFACE
 			l_window_builder:GAME_WINDOW_RENDERED_BUILDER
 			l_font:TEXT_FONT
-			--l_menu:MENU_PRINCIPAL
 		do
 			create game_music.make
 			game_music.play_music
@@ -36,8 +35,6 @@ feature {NONE} -- Initialisation
 			l_window_builder.enable_must_renderer_synchronize_update
 			window := l_window_builder.generate_window
 			create l_font.make ("includes/fonts/Lobster-regular.ttf", 20)
-			-- Temporairement bloqué pour tester le jeu
-			--create l_menu.make (window, l_font)
 			create cursor
 			create online.make
 			create {LINKED_LIST[AFFICHABLE]} viewable.make
@@ -190,27 +187,8 @@ feature {NONE} -- Implémentation
 					player.y := l_position_y
 				end
 			end
-
-
-			across map.walls_array as la_wall loop
-				if player.going_right AND player.x <= 1200 AND player.y > 0 then
-					la_wall.item.set_x (la_wall.item.x - player.speed)
-				end
-				if player.going_left AND player.x > 0 AND player.y > 0 then
-					la_wall.item.set_x (la_wall.item.x + player.speed)
-				end
-				if player.going_up AND player.x > 0 AND player.y > 0  then
-					la_wall.item.set_y (la_wall.item.y + player.speed)
-				end
-				if player.going_down AND player.x < 1600 AND player.y < 1200  then
-					la_wall.item.set_y (la_wall.item.y - player.speed)
-				end
-			end
-			across viewable as la_viewable loop
-				window.renderer.draw_sub_texture_with_rotation (la_viewable.item.image, la_viewable.item.start_x, la_viewable.item.start_y,
-					la_viewable.item.width, la_viewable.item.height, la_viewable.item.x, la_viewable.item.y, la_viewable.item.rotation_center_x,
-					la_viewable.item.rotation_center_y, la_viewable.item.rotation)
-			end
+			move_walls
+			show_viewable
 			window.renderer.present
 			audio_library.update
 		end
@@ -243,6 +221,37 @@ feature {NONE} -- Implémentation
 			-- Le `player' peut aller à droite.
 		do
 			Result := map.x + window.renderer.output_size.width + map.velocity < map.width
+		end
+
+feature {NONE} -- Initialisation
+
+	move_walls
+			-- Permet de bouger les murs de la map selon le mouvement du personnage
+		do
+			across map.walls_array as la_wall loop
+				if player.going_right AND player.x <= 1200 AND player.y > 0 then
+					la_wall.item.set_x (la_wall.item.x - player.speed)
+				end
+				if player.going_left AND player.x > 0 AND player.y > 0 then
+					la_wall.item.set_x (la_wall.item.x + player.speed)
+				end
+				if player.going_up AND player.x > 0 AND player.y > 0  then
+					la_wall.item.set_y (la_wall.item.y + player.speed)
+				end
+				if player.going_down AND player.x < 1600 AND player.y < 1200  then
+					la_wall.item.set_y (la_wall.item.y - player.speed)
+				end
+			end
+		end
+
+	show_viewable
+			-- Permet d'afficher les éléments de type affichable à l'écran
+		do
+			across viewable as la_viewable loop
+				window.renderer.draw_sub_texture_with_rotation (la_viewable.item.image, la_viewable.item.start_x, la_viewable.item.start_y,
+					la_viewable.item.width, la_viewable.item.height, la_viewable.item.x, la_viewable.item.y, la_viewable.item.rotation_center_x,
+					la_viewable.item.rotation_center_y, la_viewable.item.rotation)
+			end
 		end
 
 note
