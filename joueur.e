@@ -20,10 +20,10 @@ feature {NONE} -- Initialisation
 	make(a_renderer:GAME_RENDERER)
 			-- Initialisation de `Current'
 		do
-			initialise(a_renderer, "includes/images/personnage_pistol.png")
+			initialize(a_renderer, "includes/images/personnage_pistol.png")
 		end
 
-	initialise(a_renderer:GAME_RENDERER; image_link:STRING)
+	initialize(a_renderer:GAME_RENDERER; image_link:STRING)
 			-- Initialisation de `Current'
 		do
 			make_personnage(a_renderer, image_link)

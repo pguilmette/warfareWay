@@ -31,10 +31,10 @@ feature {NONE} -- Implémentation
 feature -- Accès
 
 	width_collision : INTEGER_32
-		-- <Precursor>
+			-- <Precursor>
 
 	height_collision : INTEGER_32
-		-- <Precursor>
+			-- <Precursor>
 
 	update(a_timestamp:NATURAL_32)
 			-- Met à jour la surface de `a_timestamp'

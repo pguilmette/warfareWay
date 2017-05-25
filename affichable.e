@@ -130,10 +130,10 @@ feature -- Accès
 			-- Centre de rotation en y de l'objet
 
 	x:INTEGER assign set_x
-		-- Position en x de l'objet
+			-- Position en x de l'objet
 
 	y:INTEGER assign set_y
-		-- Position en y de l'objet
+			-- Position en y de l'objet
 
 	set_y(a_y:INTEGER)
 			-- Assigne la valeur de `y' avec `a_y'.
@@ -208,20 +208,20 @@ feature -- Accès
 		end
 
 	center_x:INTEGER
-		-- Centre en x de l'objet
-	do
-		result := x + width//2
-	end
+			-- Centre en x de l'objet
+		do
+			result := x + width//2
+		end
 
 	center_y:INTEGER
-		-- Centre en y de l'objet
-	do
-		result := y + height//2
-	end
+			-- Centre en y de l'objet
+		do
+			result := y + height//2
+		end
 
 invariant
-	width > 0
-	height > 0
+	Is_width_positive: width > 0
+	Is_height_positive: height > 0
 
 note
 	copyright: "Tous droits réservés (c) 2017, Étienne Boutet et Philippe Guilmette"

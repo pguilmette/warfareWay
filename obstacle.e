@@ -31,10 +31,8 @@ feature {NONE} -- Implémentation
 			-- Position sur l'axe verticale de `Current'
 
 invariant
-	position_x >= 0
-	position_y >= 0
---	height > 0
---	width > 0
+	Is_position_x_positive: position_x >= 0
+	Is_position_y_positive: position_y >= 0
 
 note
 	copyright: "Tous droits réservés (c) 2017, Étienne Boutet et Philippe Guilmette"
