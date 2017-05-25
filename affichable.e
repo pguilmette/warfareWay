@@ -121,7 +121,7 @@ feature -- Accès
 			-- La hauteur de `Current'.
 
 	rotation:REAL_64
-			-- La rotation de `Current' en degrées.
+			-- La rotation de `Current' en degrés.
 
 	rotation_center_x:INTEGER
 			-- Centre de rotation en x de l'objet

@@ -13,7 +13,7 @@ inherit
 feature -- Accès
 
 	damage:INTEGER
-			-- Le nombre de dégâts infligés par coup.
+			-- Le nombre de dégâts infligé par coup.
 
 	weapon_filename:STRING
 			-- Le nom du fichier de `Current'.

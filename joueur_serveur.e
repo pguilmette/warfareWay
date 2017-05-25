@@ -13,8 +13,6 @@ inherit
 			make
 		end
 
-	JOUEUR
-
 create
 	make
 
