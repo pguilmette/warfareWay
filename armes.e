@@ -19,6 +19,7 @@ feature -- Accès
 			-- Le nom du fichier de `Current'.
 
 invariant
+	Is_damage_positive: damage > 0
 
 note
 	copyright: "Tous droits réservés (c) 2017, Étienne Boutet et Philippe Guilmette"
