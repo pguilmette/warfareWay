@@ -21,7 +21,7 @@ inherit
 feature {NONE} -- Implémentation
 
 	make(a_renderer:GAME_RENDERER; a_namefile:STRING)
-		-- <Precursor>
+			-- <Precursor>
 		do
 			Precursor(a_renderer, a_namefile)
 			width_collision := width.min (height)
