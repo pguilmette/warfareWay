@@ -1,7 +1,8 @@
 # Warfare Way
 Projet réalisé pour le cours 420-PRB-DM<br/>
 Créé par Philippe Guilmette et Étienne Boutet<br/>
-Le 24 janvier 2017
+Le 24 janvier 2017<br/><br/>
+**PRENDRE NOTE: Le développement du jeu n'est plus continué**
 
 Installation
 -----------------------------------------------
@@ -23,7 +24,7 @@ Installation
 		3. Exécuter le script ```compile_c_library.sh``` du répertoire ```game2```.
 5. Télécharger le jeu sur le lien : [https://github.com/iPHiLGG/warfareWay](https://github.com/iPHiLGG/warfareWay) (branche ```master```) et dézipper le fichier.
 6. Pour **Windows** seulement : Prendre les fichiers contenus dans le dossier ```DDL32``` si votre Windows est en 32-bit sinon prenez les fichiers contenus dans le dossier ```DDL64``` et déplacez-les dans le répertoire du jeu (où le fichier ```.ecf``` est situé).
-<br><br><br>
+<br/><br/><br/>
 **Note pour Linux (Ubuntu)** : Il est possible qu’une erreur survienne avec la commande ```apt-get``` qui indique que ```libsdl2-dev``` dépend de ```libgles2-mesa-dev```. Dans ce cas, exécuter les commandes suivantes :
 	```
 	sudo apt-get install libgles2-mesa-dev
