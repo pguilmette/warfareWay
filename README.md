@@ -2,13 +2,13 @@
 Projet réalisé pour le cours 420-PRB-DM<br/>
 Créé par Philippe Guilmette et Étienne Boutet<br/>
 Le 24 janvier 2017<br/><br/>
-**PRENDRE NOTE: Le développement du jeu n'est plus continué**
+**PRENDRE NOTE: Le développement du jeu n'est plus continué.**
 
 Installation
 -----------------------------------------------
 1. Télécharger et installer Eiffel Studio 16.05 selon votre système d’exploitation sur le site : [https://www.eiffel.org/downloads](https://www.eiffel.org/downloads)
 2. Avoir le compilateur Microsoft C et le compilateur MinGW pour 32-bit et 64-bit d’installé.
-3. Télécharger la librairie Eiffel_Game2 sur le site : [https://github.com/tioui/Eiffel_Game2](https://github.com/tioui/Eiffel_Game2) (branche « master »)
+3. Télécharger la librairie Eiffel_Game2 sur le site : [https://github.com/tioui/Eiffel_Game2](https://github.com/tioui/Eiffel_Game2) (branche ```master```)
 	* Si vous êtes sur **Windows**, prenez la branche ```windows_build``` au lieu de ```master```.
 4. Installer la librairie Eiffel_Game2
 	* Sous **Windows** :
